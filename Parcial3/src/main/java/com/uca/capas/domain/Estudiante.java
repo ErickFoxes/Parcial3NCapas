@@ -1,12 +1,15 @@
 package com.uca.capas.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -86,6 +89,18 @@ public class Estudiante {
 	@Column(name="id_departamento")
 	private int id_departamento;
 	
+	@OneToMany(mappedBy="expediente",fetch=FetchType.EAGER)
+	private List<Notas> notas;
+	
+	
+	public List<Notas> getNotas() {
+		return notas;
+	}
+
+	public void setNotas(List<Notas> notas) {
+		this.notas = notas;
+	}
+
 	public Estudiante() {}
 
 	public int getId_estudiante() {

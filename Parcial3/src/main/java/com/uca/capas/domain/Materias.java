@@ -1,10 +1,14 @@
 package com.uca.capas.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -22,6 +26,17 @@ public class Materias {
 	@NotEmpty(message="El campo nombre de usuario no puede estar vacío")
 	@Column(name="nombre_materia")
 	private String nombre_materia;
+	
+	@OneToMany(mappedBy="materia",fetch=FetchType.EAGER)
+	private List<Notas> notas;
+	
+	public List<Notas> getNotas() {
+		return notas;
+	}
+
+	public void setNotas(List<Notas> notas) {
+		this.notas = notas;
+	}
 
 	public Integer getId_materia() {
 		return id_materia;

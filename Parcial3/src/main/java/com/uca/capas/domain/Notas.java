@@ -2,9 +2,12 @@ package com.uca.capas.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -29,10 +32,31 @@ public class Notas {
 	@Column(name="nota")
 	private Double nota;
 	
-
-	private Integer id_materia;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_materia")
+	private Materias materia;
 	
-	private Integer id_expediente;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_expediente")
+	private Estudiante expediente;
+	
+	
+
+	public Materias getMateria() {
+		return materia;
+	}
+
+	public void setMateria(Materias materia) {
+		this.materia = materia;
+	}
+
+	public Estudiante getExpediente() {
+		return expediente;
+	}
+
+	public void setExpediente(Estudiante expediente) {
+		this.expediente = expediente;
+	}
 
 	public Integer getId_estudiante() {
 		return id_estudiante;
