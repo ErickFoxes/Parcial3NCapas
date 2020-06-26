@@ -71,7 +71,7 @@ public class Usuario {
 	private String direccion_residencia;
 	
 	@Column(name="estado")
-	private boolean estado;
+	private Boolean estado;
 	
 	//FUNCION
 	public String getEstadoDelegate() {
