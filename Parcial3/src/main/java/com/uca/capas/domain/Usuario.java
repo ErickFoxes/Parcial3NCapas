@@ -56,11 +56,12 @@ public class Usuario {
 	@Column(name="fecha_nac")
 	private Date fecha_nac;
 	
-	@Size(message="Este campo debe estar entre 1 y 14", min=1 , max=14)
+	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
 	@NotEmpty(message="El campo departamento no puede estar vacío")
 	@Column(name="id_departamento")
 	private int id_departamento;
 	
+	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
 	@NotEmpty(message="El campo municipio no puede estar vacío")
 	@Column(name="id_municipio")
 	private int id_municipio;
