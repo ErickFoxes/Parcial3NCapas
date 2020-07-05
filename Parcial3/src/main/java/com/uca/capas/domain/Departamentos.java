@@ -1,5 +1,43 @@
 package com.uca.capas.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(schema="public",name="TB_DEPARTAMENTOS")
 public class Departamentos {
 
+	@Id
+	@Column(name="id_departamento")
+	private int id_departamento;
+	
+	@Size(message="Este campo no debe tener mas de 30 caracteres", max=30)
+	@NotEmpty(message="El campo primer nombre no puede estar vacío")
+	@Column(name="nombre_departamento")
+	private String nombre_departamento;
+
+	public Departamentos() {
+		super();
+	}
+
+	public int getId_departamento() {
+		return id_departamento;
+	}
+
+	public void setId_departamento(int id_departamento) {
+		this.id_departamento = id_departamento;
+	}
+
+	public String getNombre_departamento() {
+		return nombre_departamento;
+	}
+
+	public void setNombre_departamento(String nombre_departamento) {
+		this.nombre_departamento = nombre_departamento;
+	}
+	
 }
