@@ -1,8 +1,12 @@
 package com.uca.capas.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -10,7 +14,19 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(schema="public",name="TB_DEPARTAMENTOS")
 public class Departamentos {
-
+	
+	@OneToMany(mappedBy="id_departamento",fetch=FetchType.EAGER)
+	private List<Estudiante> estudiantes;
+	
+	@OneToMany(mappedBy="id_departamento")
+	private List<Municipios> municipios;
+	
+	@OneToMany(mappedBy="id_departamento")
+	private List<Escuelas> escuelas;
+	
+	@OneToMany(mappedBy="id_departamento")
+	private List<Usuario> usuarios;
+	
 	@Id
 	@Column(name="id_departamento")
 	private int id_departamento;

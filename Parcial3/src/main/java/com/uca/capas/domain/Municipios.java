@@ -1,10 +1,16 @@
 package com.uca.capas.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -12,7 +18,16 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(schema="public",name="TB_MUNICIPIOS")
 public class Municipios {
-
+	
+	@OneToMany(mappedBy="id_municipio",fetch=FetchType.EAGER)
+	private List<Estudiante> estudiantes;
+	
+	@OneToMany(mappedBy="id_municipio")
+	private List<Escuelas> escuelas;
+	
+	@OneToMany(mappedBy="id_municipio")
+	private List<Usuario> usuarios;
+	
 	@Id
 	@Column(name="id_municipio")
 	private int id_municipio;
@@ -23,8 +38,9 @@ public class Municipios {
 	private String nombre_municipio;
 	
 	@NotEmpty(message="El campo departamento no puede estar vacío")
-	@Column(name="id_departamento")
-	private int id_departamento;
+	@JoinColumn(name="id_departamento")
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Departamentos id_departamento;
 	
 
 	public Municipios() {
@@ -47,11 +63,11 @@ public class Municipios {
 		this.nombre_municipio = nombre_municipio;
 	}
 
-	public int getId_departamento() {
+	public Departamentos getId_departamento() {
 		return id_departamento;
 	}
 
-	public void setId_departamento(int id_departamento) {
+	public void setId_departamento(Departamentos id_departamento) {
 		this.id_departamento = id_departamento;
 	}
 	
