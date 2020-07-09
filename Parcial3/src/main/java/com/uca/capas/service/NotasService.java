@@ -10,4 +10,5 @@ import com.uca.capas.domain.Notas;
 public interface NotasService {
 	public List<Notas> findAll() throws DataAccessException;
 	public void save(Notas notas) throws DataAccessException;
+	public Notas findOne(Integer code) throws DataAccessException;
 }

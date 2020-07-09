@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.uca.capas.dao.NotasDao;
 import com.uca.capas.domain.Notas;
+import com.uca.capas.repositories.NotasRepo;
 
 @Service
 public class NotasServiceImpl implements NotasService{
@@ -15,6 +16,9 @@ public class NotasServiceImpl implements NotasService{
 	@Autowired
 	NotasDao notasDao;
 
+	@Autowired
+	NotasRepo notasRepo;
+	
 	@Override
 	public List<Notas> findAll() throws DataAccessException {
 		return notasDao.findAll();
@@ -24,6 +28,11 @@ public class NotasServiceImpl implements NotasService{
 	public void save(Notas notas) throws DataAccessException {
 		notasDao.save(notas);
 		
+	}
+
+	@Override
+	public Notas findOne(Integer code) throws DataAccessException {
+		return notasRepo.getOne(code);
 	}
 
 }

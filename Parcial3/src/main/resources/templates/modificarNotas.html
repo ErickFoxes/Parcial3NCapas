@@ -5,9 +5,10 @@
 <title>Modificar materias cursadas</title>
 </head>
 <body>
-	<form method="post" th:action="@{/modificarNotas}" th:object="${notas}">
+	<form method="post" th:action="@{/modificarNotas2}" th:object="${notas}">
 	
 		<input type="hidden" th:field="*{id_estudiante}" >
+		
 		<h1>Modificar materia cursada </h1>
 		
 		<label>Estudiante: </label><br>

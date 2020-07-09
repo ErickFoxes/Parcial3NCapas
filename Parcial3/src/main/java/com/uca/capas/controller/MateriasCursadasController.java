@@ -63,12 +63,17 @@ public class MateriasCursadasController {
 
 	// Modificar notas
 	@RequestMapping("/modificarNotas")
-	public ModelAndView modificar(@RequestParam(value = "id_expediente") int estudiante) {
+	public ModelAndView modificar(@RequestParam(value = "id_estudiante") int nota) {
 		ModelAndView mav = new ModelAndView();
-		Estudiante estudian = new Estudiante();
+		Notas notas = new Notas();
+		
+		List<Estudiante> estudianteSelect = estudianteService.findAll();
+		List<Materias> materiaSelect = materiasService.findAll();
+		mav.addObject("estudianteSelect",estudianteSelect);
+		mav.addObject("materiaSelect",materiaSelect);
 
-		estudian = estudianteService.findOne(estudiante);
-		mav.addObject("estudiantes", estudian);
+		notas = notasService.findOne(nota);
+		mav.addObject("notas", notas);
 		mav.setViewName("modificarNotas");
 		return mav;
 	}
@@ -98,7 +103,7 @@ public class MateriasCursadasController {
 			e.printStackTrace();
 		}
 		mav.addObject("notas", notas);
-		mav.setViewName("listadoNotas");
+		mav.setViewName("mostrarNotas");
 		return mav;
 	}
 }

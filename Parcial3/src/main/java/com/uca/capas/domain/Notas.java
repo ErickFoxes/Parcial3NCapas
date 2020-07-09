@@ -47,6 +47,10 @@ public class Notas {
 	@Transient
 	private Integer id_expediente;
 
+	public Integer getId_materia2() {
+		return this.materia.getId_materia();
+	}
+	
 	public Integer getId_materia() {
 		return id_materia;
 	}
