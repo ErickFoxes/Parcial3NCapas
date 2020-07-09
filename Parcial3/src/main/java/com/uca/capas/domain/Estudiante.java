@@ -23,7 +23,7 @@ public class Estudiante {
 	@Id
 	@Column(name="id_expediente")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_estudiante;
+	private Integer id_estudiante;
 	
 	@Size(message="Este campo no debe tener mas de 30 caracteres", max=30)
 	@NotEmpty(message="El campo primer nombre no puede estar vacío")
@@ -111,7 +111,7 @@ public class Estudiante {
 
 	public Estudiante() {}
 
-	public int getId_estudiante() {
+	public Integer getId_estudiante() {
 		return id_estudiante;
 	}
 
