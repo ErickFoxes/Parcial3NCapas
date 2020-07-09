@@ -82,11 +82,19 @@ public class MateriasCursadasController {
 		@RequestMapping("/modificarNotas2")
 		public ModelAndView modificar2(@Valid @ModelAttribute Notas notas, BindingResult result) {
 			ModelAndView mav = new ModelAndView();
+			List<Notas> notas2 = null;
+			try {
+				notas2 = notasService.findAll();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			mav.addObject("notas", notas2);
+			
 			if (result.hasErrors()) {
-				mav.setViewName("modificarNotas");
+				mav.setViewName("mostrarNotas");
 			} else {
 				notasService.save(notas);
-				mav.setViewName("modificarNotas");
+				mav.setViewName("mostrarNotas");
 			}
 
 			return mav;

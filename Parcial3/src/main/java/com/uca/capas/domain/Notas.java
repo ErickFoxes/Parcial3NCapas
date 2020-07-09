@@ -115,5 +115,12 @@ public class Notas {
 		this.nota = nota;
 	}
 	
+	//Dunciones delegate
+		public String getNotaDelegate() {
+			if(this.nota == null) return "";
+			else {
+				return nota >= 6 ?"Aprobado":"Reprobado";
+			}
+		}
 	
 }

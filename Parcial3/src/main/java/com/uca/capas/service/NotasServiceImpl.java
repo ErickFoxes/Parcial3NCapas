@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.uca.capas.dao.EstudianteDAO;
+import com.uca.capas.dao.MateriaDAO;
 import com.uca.capas.dao.NotasDao;
 import com.uca.capas.domain.Notas;
 import com.uca.capas.repositories.NotasRepo;
@@ -19,6 +21,13 @@ public class NotasServiceImpl implements NotasService{
 	@Autowired
 	NotasRepo notasRepo;
 	
+	@Autowired
+	MateriaDAO materiaDao;
+	
+	@Autowired
+	EstudianteDAO estudianteDao;
+	
+	
 	@Override
 	public List<Notas> findAll() throws DataAccessException {
 		return notasDao.findAll();
@@ -26,7 +35,9 @@ public class NotasServiceImpl implements NotasService{
 
 	@Override
 	public void save(Notas notas) throws DataAccessException {
-		notasDao.save(notas);
+		notas.setMateria(materiaDao.findOne(notas.getId_materia()));
+		notas.setExpediente(estudianteDao.findOne(notas.getId_expediente()));
+		notasRepo.save(notas);
 		
 	}
 
