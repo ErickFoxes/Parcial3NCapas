@@ -1,5 +1,12 @@
 package com.uca.capas.dao;
 
-public interface CentroEscolarDAO {
+import com.uca.capas.domain.Escuelas;
 
+
+public interface CentroEscolarDAO {
+	public int saveEscuela(Escuelas escuela);
+	
+	public void updateEscuela(Escuelas escuela);
+	
+	
 }
