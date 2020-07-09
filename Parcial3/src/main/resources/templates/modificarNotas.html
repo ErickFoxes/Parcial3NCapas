@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Modificar materias cursadas</title>
+</head>
+<body>
+	<form method="post" th:action="@{/modificarNotas}" th:object="${notas}">
+	
+		<input type="hidden" th:field="*{id_estudiante}" >
+		<h1>Modificar materia cursada </h1>
+		
+		<label>Estudiante: </label><br>
+		<select th:field="*{id_expediente}">
+		    <option th:each="est: ${estudianteSelect}"
+		    th:value="${est.id_estudiante}" 
+		    th:text="${est.nombre1}">
+		    </option>
+		</select>
+		<br>
+		
+		<label>Ciclo: </label><br>
+		<input type="text" th:field="*{ciclo}">
+		<br>
+		<span th:errors="*{ciclo}" style="color: #FD8884"></span>
+		
+		<label>Año: </label><br>
+		<input type="text"th:field="*{anno}">
+		<br>
+		<span th:errors="*{anno}" style="color: #FD8884"></span>
+		
+		<label>Nota: </label><br>
+		<input type="text" th:field="*{nota}">
+		<br>
+		<span th:errors="*{nota}" style="color: #FD8884"></span>
+		
+		<label>Materia: </label><br>
+		<select th:field="*{id_materia}">
+		    <option th:each="est: ${materiaSelect}"
+		    th:value="${est.id_materia}" 
+		    th:text="${est.nombre_materia}">
+		    </option>
+		</select>
+		<br>
+		
+		<input type="submit" value="Asignar materia" >
+	</form>
+</body>
+</html>
