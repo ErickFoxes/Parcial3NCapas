@@ -20,9 +20,9 @@ public class UsuarioDAOlmpl implements UsuarioDAO {
 	@Override
 	public int saveEscuela(Usuario usuario) {
 		SimpleJdbcInsert jdbcInsert1 = new SimpleJdbcInsert(jdbcTemplate).withSchemaName("TB_DEPARTAMENTO").withTableName("TB_CENTROS_ESCOLARES").usingGeneratedKeyColumns("id_departamento");
-		SimpleJdbcInsert jdbcInsert2 = new SimpleJdbcInsert(jdbcTemplate).withSchemaName("TB_MUNICIPIOS").withTableName("TB_CENTROS_ESCOLARES").usingGeneratedKeyColumns("id_municipio");
 		
 		Map<String, Object> parametros = new HashMap<String, Object>();
+		parametros.put("rol", usuario.getRol());
 		parametros.put("nombre_usuario", usuario.getNombre());
 		parametros.put("apellido", usuario.getApellido());
 		parametros.put("edad", usuario.getEdad());
@@ -32,15 +32,14 @@ public class UsuarioDAOlmpl implements UsuarioDAO {
 		
 		
 		Number id_genered1 = jdbcInsert1.executeAndReturnKey(parametros);
-		Number id_genered2 = jdbcInsert2.executeAndReturnKey(parametros);
 		
-		return id_genered1 , id_genered2;
+		return id_genered1.intValue();
 	}
 
 	@Override
 	public void updateEscuela(Usuario usuario) {
 		// TODO Auto-generated method stub
-		Object[] parametros = new Object [] {usuario.getId_usuario(), usuario.getNombre(), usuario.getApellido(), usuario.getEdad(), usuario.getFecha_nac(), usuario.getId_departamento(), usuario.getId_municipio(), usuario.getDireccion_residencia(), usuario.getEstadoDelegate()};
+		Object[] parametros = new Object [] {usuario.getId_usuario(), usuario.getRol() ,usuario.getNombre(), usuario.getApellido(), usuario.getEdad(), usuario.getFecha_nac(), usuario.getId_departamento(), usuario.getId_municipio(), usuario.getDireccion_residencia(), usuario.getEstadoDelegate()};
 		jdbcTemplate.update(sql,parametros);
 	}
 

@@ -42,13 +42,13 @@ public class JPAConfiguration {
 	
 	@Bean
 	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		DriverManagerDataSource dataSource= new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/BDSistemaNotas");
+		dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/Holi");
 		dataSource.setUsername("postgres");
-		dataSource.setPassword("1234");
-		return dataSource;
+		dataSource.setPassword("00046416");
 		
+		return dataSource;
 	}
 	
 	Properties hibernateProperties() {
