@@ -34,51 +34,58 @@ public class MainController {
 	
 	//inicio
 	@RequestMapping ("/")
-	public ModelAndView inicio() {
+	public ModelAndView inicio(Materia materia) {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("materia", materia);
 		mav.setViewName("Materias");
 		return mav;
 	}
 
 	//paginas
-	@RequestMapping ("/AñadirMateria")
-	public ModelAndView addMateria() {
+	@RequestMapping ("/AgregarMateria")
+	public ModelAndView addMateria(Materia materia) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("AñadirMateria");
+		mav.addObject("materia", materia);
+		mav.setViewName("AgregarMateria");
 		return mav;
 	}
 	
-	@RequestMapping ("/AñadirUsuario")
-	public ModelAndView addUsuario() {
+	@RequestMapping ("/AgregarUsuario")
+	public ModelAndView addUsuario(Usuario usuario) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("AñadirUsuario");
+		mav.addObject("usuario", usuario);
+		mav.setViewName("AgregarUsuario");
 		return mav;
 	}
 	
-	@RequestMapping ("/AñadirEscuela")
-	public ModelAndView addEscuela() {
+	@RequestMapping ("/AgregarEscuela")
+	public ModelAndView addEscuela(Escuela escuela) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("AñadirCE");
+		mav.addObject("escuela", escuela);
+		mav.setViewName("AgregarCE");
 		return mav;
 	}
 	
 	@RequestMapping ("/EditarMateria")
-	public ModelAndView EditMateria() {
+	public ModelAndView EditMateria(Materia materia) {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("materia", materia);
 		mav.setViewName("ActualizarMateria");
 		return mav;
 	}
 	
 	@RequestMapping ("/EditarUsuario")
-	public ModelAndView editUsuario() {
+	public ModelAndView editUsuario(Usuario usuario) {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("usuario", usuario);
 		mav.setViewName("ActualizarUsuario");
 		return mav;
 	}
 	
 	@RequestMapping ("/EditarEscuela")
-	public ModelAndView editEscuela() {
+	public ModelAndView editEscuela(Escuela escuela) {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("escuela", escuela);
 		mav.setViewName("ActualizarCE");
 		return mav;
 	}
@@ -103,7 +110,7 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
-			mav.setViewName("AñadirUsuario");
+			mav.setViewName("AgregarUsuario");
 		}
 		else {
 			usuarioService.saveUsuario(usuario);
@@ -165,7 +172,7 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
-			mav.setViewName("AñadirMateria");
+			mav.setViewName("AgregarMateria");
 		}
 		else {
 			materiaService.saveMateria(materia);
@@ -232,7 +239,7 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
-			mav.setViewName("AñadirMateria");
+			mav.setViewName("AgregarMateria");
 		}
 		else {
 			centroEscolarService.saveEscuela(escuela);

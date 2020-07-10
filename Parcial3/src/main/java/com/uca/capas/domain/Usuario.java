@@ -27,13 +27,14 @@ public class Usuario {
 	private Integer id_usuario;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
+	@NotEmpty(message="El campo departamento no puede estar vacío")
 	@JoinColumn(name="id_rol")
 	private Rol id_rol;
 	
 	@Size(message="Este campo no debe tener mas de 20 caracteres", max=20)
 	@NotEmpty(message="El campo nombre de usuario no puede estar vacío")
-	@Column(name="nombre_usuario")
-	private String nombre_usuario;
+	@Column(name="username")
+	private String username;
 	
 	@Size(message="Este campo no debe tener mas de 25 caracteres", max=25)
 	@NotEmpty(message="El campo contraseña no puede estar vacío")
@@ -98,12 +99,13 @@ public class Usuario {
 		this.id_usuario = id_usuario;
 	}
 
-	public String getNombre_usuario() {
-		return nombre_usuario;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPass() {

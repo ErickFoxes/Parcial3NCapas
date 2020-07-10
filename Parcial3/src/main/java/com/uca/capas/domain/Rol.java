@@ -19,7 +19,7 @@ public class Rol {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int rol_id;
 	
-	@Column(name="id_rol")
+	@Column(name="rol")
 	String rol;
 	
 	@OneToMany(mappedBy="id_rol",fetch=FetchType.EAGER)

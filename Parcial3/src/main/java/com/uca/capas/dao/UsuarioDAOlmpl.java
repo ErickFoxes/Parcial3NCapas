@@ -64,7 +64,7 @@ public class UsuarioDAOlmpl implements UsuarioDAO {
 	@Transactional
 	public void updateUsuario(Usuario usuario) throws DataAccessException {
 		// TODO Auto-generated method stub
-		Object[] parametros = new Object [] {usuario.getId_usuario(), usuario.getId_rol(), usuario.getNombre_usuario(), usuario.getPass() ,usuario.getNombre(), usuario.getApellido(), usuario.getEdad(), usuario.getFecha_nac(), usuario.getId_departamento(), usuario.getId_municipio(), usuario.getDireccion_residencia(), usuario.getEstadoDelegate()};
+		Object[] parametros = new Object [] {usuario.getId_usuario(), usuario.getId_rol(), usuario.getUsername(), usuario.getPass() ,usuario.getNombre(), usuario.getApellido(), usuario.getEdad(), usuario.getFecha_nac(), usuario.getId_departamento(), usuario.getId_municipio(), usuario.getDireccion_residencia(), usuario.getEstadoDelegate()};
 		jdbcTemplate.update(sql,parametros);
 	}
 
