@@ -2,10 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>Lista de Estudiantes</title>
+  <title>Expediente de alumno</title>
 </head>
 
 <body>
+
+	<h1>Expediente de Alumno - Pantalla inicial</h1>
 
 	<form th:action = "@{/insertExpediente}">
 		<input type="submit" value="Agregar nuevo expediente">
@@ -24,6 +26,10 @@
 	
 	<div>
         <h3 th:text="${ExpedienteS}"></h3>
+    </div>
+    
+    <div>
+        <h3 th:text="${ExpedienteA}"></h3>
     </div>
 	
 </body>

@@ -8,7 +8,7 @@
 <body>
 
 	<h1>Actualizar expediente</h1>
-	<form th:action = "@{/saveExpediente}" th:object = "${estudiante}" method = "post">
+	<form th:action = "@{/actExpediente}" th:object = "${estudiante}" method = "post">
 	
 		<label> Codigo del estudiante: </label>
 		<input type = "hidden" th:field = "*{id_estudiante}">

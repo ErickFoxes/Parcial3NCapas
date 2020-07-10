@@ -72,7 +72,9 @@ public class EstudianteController {
 		mav.addObject("escuelas", escuelas);
 		
 		mav.setViewName("Estudiante/agregarEstudiante");
+		
 		return mav;
+		
 	}
 			
 	@RequestMapping(value = "/saveExpediente" )
@@ -93,6 +95,7 @@ public class EstudianteController {
 			
 			mav.addObject("estudiante", estudiante);
 			mav.addObject("departamentos", departamentos);
+			
 			mav.addObject("municipios", municipios);
 			mav.addObject("escuelas", escuelas);
 			
@@ -103,6 +106,43 @@ public class EstudianteController {
 			estudianteService.save(estudiante);
 			//imprimiendo que el expediente fue ingresado con exito uwu
 			mav.addObject("ExpedienteS", "Expediente creado con exito");
+			mav.setViewName("Estudiante/indexEstudiante");
+		}
+		
+		return mav;
+		
+	}
+	
+	//save para actualizar uwu
+	@RequestMapping(value = "/actExpediente" )
+	public ModelAndView actExpediente(@Valid @ModelAttribute("estudiante") Estudiante estudiante, BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+		
+		if(result.hasErrors()) {
+			List <Departamentos> departamentos = null;
+			List <Municipios> municipios = null;
+			List <Escuelas> escuelas = null;
+			try{
+				departamentos = departamentoService.findAll();
+				municipios = municipioService.findAll();
+				escuelas = escuelaService.findAll();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+			mav.addObject("estudiante", estudiante);
+			mav.addObject("departamentos", departamentos);
+			
+			mav.addObject("municipios", municipios);
+			mav.addObject("escuelas", escuelas);
+			
+			mav.setViewName("Estudiante/actualizarEstudiante");
+		}
+		
+		else {
+			estudianteService.save(estudiante);
+			//imprimiendo que el expediente fue actualizado con exito uwu
+			mav.addObject("ExpedienteA", "Expediente actualizado con exito");
 			mav.setViewName("Estudiante/indexEstudiante");
 		}
 		
