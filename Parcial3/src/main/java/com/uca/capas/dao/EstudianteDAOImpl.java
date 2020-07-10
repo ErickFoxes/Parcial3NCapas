@@ -71,7 +71,7 @@ public class EstudianteDAOImpl implements EstudianteDAO {
 		
 		Object[] parametros = new Object[] { estudiante.getNombre1(), estudiante.getNombre2(), estudiante.getApellido1(), estudiante.getApellido2(),
 				estudiante.getCarnet(), estudiante.getFecha_nac(), estudiante.getDireccion_vivienda(), estudiante.getTel(), estudiante.getCel(),
-				estudiante.getId_centro_escolar(), estudiante.getNombre_padre(), estudiante.getNombre_madre(), estudiante.getId_departamento(), estudiante.getId_municipio() };
+				estudiante.getEscuela(), estudiante.getNombre_padre(), estudiante.getNombre_madre(), estudiante.getDepartamento(), estudiante.getMunicipio() };
 		jdbcTemplate.update(sql, parametros);
 		
 	}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Lista de Estudiantes</title>
+</head>
+
+<body>
+	
+	<form th:action = "@{/mostrarEstudiante}" method = "post">
+		<label>Buscar por codigo de estudiante: </label>
+		<input type="number" name="codigo">
+		<br>
+		<input type="submit" value="Buscar">
+	</form>
+	
+	<br>
+	
+	<form th:action = "@{/insertExpediente}">
+		<input type="submit" value="Agregar nuevo expediente">
+	</form>
+	
+	<br>
+	
+	<form th:action = "@{/actualizarEstudiante}" method = "post">
+		<label>Actualizar estudiante por codigo: </label>
+		<input type="number" name="codigo">
+		<br>
+		<input type="submit" value="Actualizar">
+	</form>
+	
+	<br>
+	
+	<!-- <form th:action = "@{/filtrarEstudiante}" method = "post">
+		<label>Ingrese la cadena por la que desea filtrar: </label>
+		<input type="submit" value="Filtrar">
+	</form>
+	 -->
+
+</body>
+</html>
