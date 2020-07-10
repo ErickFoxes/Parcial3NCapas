@@ -23,7 +23,6 @@ public class Usuario {
 	
 	@Id
 	@Column(name="id_usuario")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id_usuario;
 	
 	@ManyToOne(fetch=FetchType.LAZY)

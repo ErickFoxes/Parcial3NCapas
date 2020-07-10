@@ -8,56 +8,60 @@
 
 	<h1>ACTUALIZAR UN USUARIO</h1>
 	
-	<form th:action="@{/ActualizarUsuario}" th:object="${usuario}" method="POST">
+	<form th:action="@{/actualizarUsuario}" th:object="${usuario}" method="POST">
+		<div style="border: 1px solid black; padding:20px;">
+		
+		<input type="hidden" name="id_usuario" th:value=*{id_usuario} >
+		
+		
+		<label for="id_user"><font color="#000000" face ="Arial" >Id user: </font>  </label>
+		<input type="text" th:field="*{id_usuario}" id="id_user" required >
+		<span th:errors ="*{id_usuario}" style="color:#FF0000"></span>
 	
-		<label >id Usuario</label><br/>
-		<input type="number" placeholder="id" th:field="${usuario.id_usuario}"/><br/>
+		<label for="name_user"><font color="#000000" face ="Arial" >Nombre usuario: </font>  </label>
+		<input type="text" th:field="*{username}" id="name_user" required >
+		<span th:errors ="*{username}" style="color:#FF0000"></span>
 	
-		<label >Nombre Usuario</label><br/>
-		<input type="text" placeholder="nombre usuario" th:field="${usuario.username}"/><br/>
-		
-		<label >Pass</label><br/>
-		<input type="text" placeholder="pass" th:field="${usuario.pass}"/><br/>
-		
-		<label >Nombre</label><br/>
-		<input type="text" placeholder="nombre" th:field="${usuario.nombre}"/><br/>
-		
-		<label >Apellido</label><br/>
-		<input type="text" placeholder="apellido" th:field="${usuario.apellido}"/><br/>
-		
-		<label >Edad</label><br/>
-		<input type="number" placeholder="edad" th:field="${usuario.edad}"/><br/>
-		
-		<label >Fecha de nacimiento</label><br/>
-		<input type="date" th:field="${usuario.fecha_nac}" />
-		<br/>
-		
-		<label >Rol</label><br/>
-		<select th:field="${usuario.rol}" multiple="multiple">
-			<option th:each="rol :${roles}" th:value="${rol.id_rol}" th:text="${rol.rol}">
-			</option>
-		</select><br/>
-		
-		<label >Departamento</label><br/>
-		<input type="text" placeholder="departamento" th:field="${usuario.id_departamento}"/><br/>
-		
-		<label >Municipios</label><br/>
-		<input type="text" placeholder="municipio" th:field="${usuario.id_municipio}"/><br/>
-		
-		<label >Direccion</label><br/>
-		<input type="text" placeholder="direccion" th:field="${usuario.direccion_residencia}"/><br/>
-		
-		<div>
-			<label>Activo</label>
-			<input type="radio" th:field="*{estado}" th:value="${true}">
-			<label>Inactivo</label>
-			<input type="radio" th:field="*{estado}" th:value="${false}">
-		</div>
-		
-		<input type="submit" value="Guardar"> 
-		
-		
+		<label for="Password"><font color="#000000" face ="Arial" >Password: </font>  </label>
+		<input type="text" th:field="*{pass}" id="Password" required >
+		<span th:errors ="*{pass}" style="color:#FF0000"></span>
+	
+		<label for="name"><font color="#000000" face ="Arial" >Nombre: </font>  </label>
+		<input type="text" th:field="*{nombre}" id="name" required >
+		<span th:errors ="*{nombre}" style="color:#FF0000"></span>
+	
+		<label for="lastname"><font color="#000000" face ="Arial" >Apellido: </font>  </label>
+		<input type="text" th:field="*{apellido}" id="lastname" required >
+		<span th:errors ="*{apellido}" style="color:#FF0000"></span>
+	
+		<label for="age"><font color="#000000" face ="Arial" >Edad: </font>  </label>
+		<input type="text" th:field="*{edad}" id="age" required >
+		<span th:errors ="*{edad}" style="color:#FF0000"></span>
+	
+		<label for="date"><font color="#000000" face ="Arial" >fecha nacimiento: </font>  </label>
+		<input type="date" th:field="{fecha_nac}" id="date" required >
+		<span th:errors ="{fecha_nac}" style="color:#FF0000"></span>
+	
+		<label for="dep"><font color="#000000" face ="Arial" >Departamento: </font>  </label>
+		<input type="text" th:field="*{id_departamento}" id="dep" required >
+		<span th:errors ="*{id_departamento}" style="color:#FF0000"></span>
+	
+		<label for="muni"><font color="#000000" face ="Arial" >Municipio: </font>  </label>
+		<input type="text" th:field="*{id_municipio}" id="muni" required >
+		<span th:errors ="*{id_municipio}" style="color:#FF0000"></span>
+	
+		<label for="address"><font color="#000000" face ="Arial" >Direccion: </font>  </label>
+		<input type="text" th:field="*{direccion_residencia}" id="address" required >
+		<span th:errors ="*{direccion_residencia}" style="color:#FF0000"></span>
+	
+		<label>Activo</label>
+		<input type="radio" th:field="*{estado}" th:value="${true}">
+		<label>Inactivo</label>
+		<input type="radio" th:field="*{estado}" th:value="${false}">
+	
+		<input type="submit" value="Guardar">  
 	</form>
+	
 
 
 </body>

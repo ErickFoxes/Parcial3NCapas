@@ -26,9 +26,9 @@
 				<th th:text="${usuario.apellido}"/>
 				<th th:text="${usuario.edad}"/>
 				<th th:text="${usuario.fecha_nac}"/>
-				rol
-				departamento
-				municipio
+				<th th:text="${escuela.id_rol}"/>
+				<th th:text="${usuario.id_departamento}"/>
+				<th th:text="${usuario.id_municipio}"/>
 				<th th:text="${usuario.direccion_residencia}"/>
 				<th>
 					<form method="post" th:action="@{/actualizarUsuario2}">

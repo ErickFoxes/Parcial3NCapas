@@ -39,9 +39,9 @@ public class MainController {
 	@RequestMapping ("/")
 	public ModelAndView inicio() { 
 		ModelAndView mav = new ModelAndView();
-		List<Materia> materiasSelect = materiaService.findAllSubjects();
-		mav.addObject("materia", materiasSelect );
-		mav.setViewName("Materias"); 
+		List<Usuario> usauriosSelect = usuarioService.findAllUsers();
+		mav.addObject("usuario", usauriosSelect );
+		mav.setViewName("Usuarios"); 
 		return mav;
 	}
 

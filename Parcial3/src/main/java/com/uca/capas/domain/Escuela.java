@@ -24,7 +24,6 @@ public class Escuela {
 	
 	@Id
 	@Column(name="id_centro_escolar")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id_centro_escolar;
 	
 	@Size(message="Este campo no debe tener mas de 30 caracteres", max=30)

@@ -18,12 +18,12 @@
 			<th>Opcion</th>
 		</thead>
 		
-		<th:block th:each="escuela, row:${escuela}"> 
+		<th:block th:each="escuela, row:${escuela.departamento}, ${escuela.municipio}"> 
 			<tr>
 				<th th:text="${escuela.id_centro_escolar}"/>
 				<th th:text="${escuela.nombre_centro_escolar}"/>
-				departamento
-				municipio
+				<th th:text="${escuela.departamento.departamento_id}"/>
+				<th th:text="${escuela.municipio.municipio_id}"/>
 				<th>
 					<form method="post" th:action="@{/actualizarEscuela2}">
 					<input type="hidden" name="id_centro_escolar" th:value=${materia.id_centro_escolar} >
@@ -39,54 +39,7 @@
 	<form th:action="@{/AgregarEscuela}" method="post">
 		<input type="submit" value="Agregar nueva Escuela">
 	</form>
-	
-	
-	
-	
-	
-	
-	<table>
-		<thead>
-			<tr>
-				<th>id Centro escolar</th>
-				<th>Nombre</th>
-				<th>Departamento</th>
-				<th>Municipio</th>
-				<th>Opcion</th>
-			</tr>
-		</thead>
-		<tbody>
-			<th  th:each="escuela : ${escuelas}">
-				<td th:text="${escuela.id_centro_escolar}"></td>
-				<td th:text="${escuela.nombre_centro_escolar}"></td>
-				
-				<td>
-					<th:block th:each="dep,iter: ${escuela.departamentos}">
-    					<label th:text="${dep.nombre_departamento}"></label>
-  					</th:block>
-				</td>
-				
-				<td>
-					<th:block th:each="muni,iter: ${escuela.municipios}">
-    					<label th:text="${muni.nombre_municipio}"></label>
-  					</th:block>
-				</td>
-				
-				<td>
-					<form th:action="@{/EditarEscuela}" method="post">
-						<input type="submit" value="Editar">
-					</form>	
-				
-				</td>
-			</th>
-			
-		</tbody>
-	</table>
-	<br>
-	
-	<form th:action="@{/AñadirEscuela}" method="post">
-		<input type="submit" value="Agregar nueva Escuela">
-	</form>
+
 	
 </body>
 </html>
