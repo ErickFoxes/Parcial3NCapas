@@ -19,7 +19,6 @@ public class Materia {
 	
 	@Id
 	@Column(name="id_materia")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id_materia;
 	
 	@Size(message="Este campo no debe tener mas de 25 caracteres", max=25)

@@ -19,6 +19,12 @@
 			<tr>
 				<th th:text="${materia.id_materia}"/>
 				<th th:text="${materia.nombre_materia}"/>
+				<th>
+					<form method="post" th:action="@{/actualizarMateria2}">
+					<input type="hidden" name="id_materia" th:value=${materia.id_materia} >
+						<input type="submit" value="Editar">
+					</form>
+				</th>
 			</tr>
 		</th:block> 
 	</table> 

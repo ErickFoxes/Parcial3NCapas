@@ -7,11 +7,13 @@
 <body>
 	<h1>ACTUALIZAR UNA MATERIA</h1>
 	
-	<form th:action="@{/actualizarMateria}" th:object="${materias}" method="POST">
+	<form th:action="@{/actualizarMateria}" th:object="${materia}" method="POST">
 		<div style="border: 1px solid black; padding:20px;">
 		
-		<label th:text="Nombre de Materia"></label><br/>
-		<input type="text" placeholder="materia" th:field="${materias.nombre_materia}"/><br/>
+		<input type="hidden" name="id_materia" th:value=*{id_materia} >
+		
+		<label>Nombre de Materia</label><br/>
+		<input type="text" placeholder="materia" th:field="*{nombre_materia}"/><br/>
 		
 		<input type="submit" value="Guardar">  
 	</form>

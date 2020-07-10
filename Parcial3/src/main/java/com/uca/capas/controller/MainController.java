@@ -169,17 +169,17 @@ public class MainController {
 
 	//--Guardar nuevo--
 	@RequestMapping ("/guardarMateria")
-	public ModelAndView guardarM(@Valid @ModelAttribute Materia materia, BindingResult result) {
+	public ModelAndView guardarM(@Valid @ModelAttribute Materia materias, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
 			mav.setViewName("AgregarMateria");
 		}
 		else {
-			materiaService.saveMateria(materia);
-			List<Materia> materias = null;
+			materiaService.saveMateria(materias);
+			List<Materia> materia = null;
 			try {
-				materias = materiaService.findAllSubjects(); 
+				materia = materiaService.findAllSubjects(); 
 			}
 			catch(Exception e) {
 				e.printStackTrace();
@@ -192,23 +192,34 @@ public class MainController {
 	}
 	
 	//--Actualizar--
+		@RequestMapping ("/actualizarMateria2")
+		public ModelAndView updateM2(@RequestParam(value = "id_materia") int materia) {
+			ModelAndView mav = new ModelAndView();
+			Materia mate = null;
+			mate = materiaService.findSubject(materia);
+			mav.addObject("materia", mate);
+			mav.setViewName("ActualizarMateria");
+			return mav;
+		}
+	
+	
+	//--Actualizar--
 	@RequestMapping ("/actualizarMateria")
 	public ModelAndView updateM(@Valid @ModelAttribute Materia materia, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
-		
+		List<Materia> materiasSelect = null;
 		if(result.hasErrors()) {
 			mav.setViewName("ActualizarMateria");
 		}
 		else {
-			materiaService.updateMateria(materia);
-			List<Materia> materias = null;
+			materiaService.saveMateria(materia);
 			try {
-				materias = materiaService.findAllSubjects();
+				materiasSelect= materiaService.findAllSubjects();
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-			mav.addObject("materia", materia);
+			mav.addObject("materia", materiasSelect);
 			mav.setViewName("Materias");
 		}
 

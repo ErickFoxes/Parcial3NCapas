@@ -9,30 +9,34 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.uca.capas.dao.UsuarioDAO;
 import com.uca.capas.domain.Usuario;
+import com.uca.capas.repositories.UsuarioRepo;
 
 @Service
 public class UsuarioServicelmpl implements  UsuarioService{
 	
 	@Autowired
 	UsuarioDAO usuarioDAO;
+	
+	@Autowired
+	UsuarioRepo usaurioRepo;
 
 	@Override
 	public List<Usuario> findAllUsers() throws DataAccessException {
 		// TODO Auto-generated method stub
-		return usuarioDAO.findAllUsers();
+		return usaurioRepo.findAll();
 	}
 
 	@Override
 	public Usuario findOneUser(Integer code) throws DataAccessException {
 		// TODO Auto-generated method stub
-		return usuarioDAO.findOneUser(code);
+		return usaurioRepo.getOne(code);
 	}
 
 	@Override
 	@Transactional
 	public void saveUsuario(Usuario usuario) throws DataAccessException {
 		// TODO Auto-generated method stub
-		usuarioDAO.saveUsuario(usuario);
+		usaurioRepo.save(usuario);
 	}
 
 	@Override
