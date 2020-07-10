@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Buscar estudiante</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+	<form method="post" th:action="@{/buscarEstudiante}" >
+		<h1>Expedientes de Alumnos - Pantalla principal</h1>
+		<label>Buscar Alumno por: </label><br>
+		<select name="buscarPor">
+		  <option>Seleccione criterio [Nombre, Apellido]</option> 
+		  <option value="Nombre">Nombre</option>
+		  <option value="Apellido">Apellido</option>
+		</select>
+		
+		<label>Valor de busqueda: </label><br>
+		<input type="text" name="dato">
+		<br>
+		
+		<input type="submit" value="Buscar" >
+	</form>
+	<form method="post" th:action="@{/ingresarnota}" >
+		<input type="submit" value="Agregar Nueva Materia" >
+	</form>
+	<form th:action = "@{/insertExpediente}">
+		<input type="submit" value="Agregar nuevo expediente">
+	</form>
+	
+	<div>
+        <h3 th:text="${ExpedienteS}"></h3>
+    </div>
+    
+    <div>
+        <h3 th:text="${ExpedienteA}"></h3>
+    </div>
+</body>
+</html>

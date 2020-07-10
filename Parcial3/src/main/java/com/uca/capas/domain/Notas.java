@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -36,11 +37,35 @@ public class Notas {
 	@JoinColumn(name="id_materia")
 	private Materias materia;
 	
+	@Transient
+	private Integer id_materia;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_expediente")
 	private Estudiante expediente;
 	
+	@Transient
+	private Integer id_expediente;
+
+	public Integer getId_materia2() {
+		return this.materia.getId_materia();
+	}
 	
+	public Integer getId_materia() {
+		return id_materia;
+	}
+
+	public void setId_materia(Integer id_materia) {
+		this.id_materia = id_materia;
+	}
+
+	public Integer getId_expediente() {
+		return id_expediente;
+	}
+
+	public void setId_expediente(Integer id_expediente) {
+		this.id_expediente = id_expediente;
+	}
 
 	public Materias getMateria() {
 		return materia;
@@ -90,5 +115,12 @@ public class Notas {
 		this.nota = nota;
 	}
 	
+	//Dunciones delegate
+		public String getNotaDelegate() {
+			if(this.nota == null) return "";
+			else {
+				return nota >= 6 ?"Aprobado":"Reprobado";
+			}
+		}
 	
 }

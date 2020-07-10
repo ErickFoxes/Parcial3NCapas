@@ -57,5 +57,17 @@ public class EstudianteServiceImpl implements EstudianteService {
 	public int insertEstudianteAutoId(Estudiante c) {
 		return estudianteDAO.insertEstudianteAutoId(c);
 	}
+	
+	@Override
+	public List<Estudiante> filtrarPorNombre(String nombre) throws DataAccessException {
+		return estudianteRepo.findByNombre1(nombre);
+		
+	}
+	
+	@Override
+	public List<Estudiante> filtrarPorApellido(String nombre) throws DataAccessException {
+		return estudianteRepo.findByApellido1(nombre);
+		
+	}
 
 }

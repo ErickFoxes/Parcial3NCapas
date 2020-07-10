@@ -18,4 +18,7 @@ public interface EstudianteService {
 	
 	public int insertEstudianteAutoId(Estudiante c);
 	
+	public List<Estudiante> filtrarPorNombre(String nombre) throws DataAccessException;
+	
+	public List<Estudiante> filtrarPorApellido(String nombre) throws DataAccessException;
 }

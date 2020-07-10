@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Alumnos</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<table>
+		<thead>
+			<th>Acción</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Aprobadas</th>
+			<th>Reprobadas</th>
+			<th>Promedio</th>
+		</thead>
+		<th:block th:each="est, row:${estudiante}">
+			<tr>
+				<th>
+					<form method="post"  th:action="@{/actualizarEstudiante}">
+						<input type="hidden" name="id_estudiante" th:value=${est.id_estudiante} >
+						<input type="submit" value="est">
+					</form>
+					<form method="post" th:action="@{/mostrarnota}">
+						<input type="hidden" name="id_estudiante" th:value=${est.id_estudiante} >
+						<input type="submit" value="mat">
+					</form>
+				</th>
+				<th th:text="${est.nombre1}">
+				<th th:text="${est.apellido1}">
+				<th th:text="${est.aprobados}">
+				<th th:text="${est.reprobados}">
+				<th th:text="${est.promedio}">
+			</tr>
+		</th:block>
+	</table>
+</body>
+</html>

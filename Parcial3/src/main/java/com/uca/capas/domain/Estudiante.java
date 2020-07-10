@@ -19,6 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -114,7 +115,39 @@ public class Estudiante {
 	@OneToMany(mappedBy="expediente",fetch=FetchType.EAGER)
 	private List<Notas> notas;
 	
+	@Transient
+	private Integer reprobados;
 	
+	@Transient
+	private Integer aprobados;
+	
+	@Transient
+	private Double promedio; 
+	
+	public Integer getReprobados() {
+		return reprobados;
+	}
+
+	public void setReprobados(Integer reprobados) {
+		this.reprobados = reprobados;
+	}
+
+	public Integer getAprobados() {
+		return aprobados;
+	}
+
+	public void setAprobados(Integer aprobados) {
+		this.aprobados = aprobados;
+	}
+
+	public Double getPromedio() {
+		return promedio;
+	}
+
+	public void setPromedio(Double promedio) {
+		this.promedio = promedio;
+	}
+
 	public List<Notas> getNotas() {
 		return notas;
 	}
