@@ -1,5 +1,11 @@
 package com.uca.capas.domain;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +20,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(schema="public",name="TB_EXPEDIENTE")
@@ -23,7 +32,7 @@ public class Estudiante {
 	@Id
 	@Column(name="id_expediente")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_estudiante;
+	private Integer id_estudiante;
 	
 	@Size(message="Este campo no debe tener mas de 30 caracteres", max=30)
 	@NotEmpty(message="El campo primer nombre no puede estar vacío")
@@ -45,57 +54,62 @@ public class Estudiante {
 	@Column(name="apellido2")
 	private String apellido2;
 	
-	@Size(message="Este campo no debe tener mas de 9 caracteres", max=9)
+	@Size(message="Este campo debe tener exactamente 9 caracteres", max=9, min =9)
 	@NotEmpty(message="El campo carnet no puede estar vacío")
 	@Column(name="carnet")
 	private String carnet;
 	
-	@NotEmpty(message="El campo fecha de nacimiento no puede estar vacío")
+	//@NotNull(message = "El campo fecha de nacimiento no puede quedar vacio")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotNull(message="El campo fecha de nacimiento no puede estar vacío")
 	@Column(name="fecha_nac")
 	private Date fecha_nac;
+	
+	@Column(name="edad")
+	private Integer edad;
 	
 	@Size(message="Este campo no debe tener mas de 100 caracteres", max=100)
 	@NotEmpty(message="El campo dirección de vivienda no puede estar vacío")
 	@Column(name="direccion_vivienda")
 	private String direccion_vivienda;
 	
-	@Size(message="Este campo no debe tener mas de 8 caracteres", max=8)
+	@Size(message="Este campo debe tener exactamente 8 caracteres", max=8, min =8)
 	@NotEmpty(message="El campo telefono no puede estar vacío")
 	@Column(name="telefono")
 	private String tel;
 	
-	@Size(message="Este campo no debe tener mas de 8 caracteres", max=8)
+	@Size(message="Este campo debe tener exactamente 8 caracteres", max=8, min = 8)
 	@NotEmpty(message="El campo celular no puede estar vacío")
 	@Column(name="celular")
 	private String cel;
 	
 	//Tomany
 	@ManyToOne(fetch=FetchType.LAZY)
-	@NotEmpty(message="El campo centro escolar de procedencia no puede estar vacío")
+	//@NotEmpty(message="El campo centro escolar de procedencia no puede estar vacío")
 	@JoinColumn(name="id_centro_escolar")
-	private Escuelas id_centro_escolar;
+	private Escuelas escuela;
 	
 	@Size(message="Este campo no debe tener mas de 50 caracteres", max=50)
-	@NotEmpty(message="El campo nombres del padre no puede estar vacío")
+	@NotEmpty(message="El campo nombre del padre no puede estar vacío")
 	@Column(name="nombre_padre")
 	private String nombre_padre;
 	
 	@Size(message="Este campo no debe tener mas de 50 caracteres", max=50)
-	@NotEmpty(message="El campo nombres de las madre no puede estar vacío")
+	@NotEmpty(message="El campo nombre de la madre no puede estar vacío")
 	@Column(name="nombre_madre")
 	private String nombre_madre;
 	
 	//Tomany
 	@ManyToOne(fetch=FetchType.LAZY)
-	@NotEmpty(message="El campo municipio no puede estar vacío")
+	//@NotEmpty(message="El campo municipio no puede estar vacío")
 	@JoinColumn(name="id_municipio")
-	private Municipios id_municipio;
+	private Municipios municipio;
 	
 	//Tomany
 	@ManyToOne(fetch=FetchType.LAZY)
-	@NotEmpty(message="El campo departamento no puede estar vacío")
+	//@NotEmpty(message="El campo departamento no puede estar vacío")
 	@JoinColumn(name="id_departamento")
-	private Departamentos id_departamento;
+	private Departamentos departamento;
 	
 	@OneToMany(mappedBy="expediente",fetch=FetchType.EAGER)
 	private List<Notas> notas;
@@ -111,11 +125,11 @@ public class Estudiante {
 
 	public Estudiante() {}
 
-	public int getId_estudiante() {
+	public Integer getId_estudiante() {
 		return id_estudiante;
 	}
 
-	public void setId_estudiante(int id_estudiante) {
+	public void setId_estudiante(Integer id_estudiante) {
 		this.id_estudiante = id_estudiante;
 	}
 
@@ -163,6 +177,14 @@ public class Estudiante {
 		return fecha_nac;
 	}
 
+	public Integer getEdad() {
+		return edad;
+	}
+
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
+
 	public void setFecha_nac(Date fecha_nac) {
 		this.fecha_nac = fecha_nac;
 	}
@@ -191,12 +213,12 @@ public class Estudiante {
 		this.cel = cel;
 	}
 
-	public Escuelas getId_centro_escolar() {
-		return id_centro_escolar;
+	public Escuelas getEscuela() {
+		return escuela;
 	}
 
-	public void setId_centro_escolar(Escuelas id_centro_escolar) {
-		this.id_centro_escolar = id_centro_escolar;
+	public void setEscuela(Escuelas escuela) {
+		this.escuela = escuela;
 	}
 
 	public String getNombre_padre() {
@@ -215,21 +237,45 @@ public class Estudiante {
 		this.nombre_madre = nombre_madre;
 	}
 
-	public Municipios getId_municipio() {
-		return id_municipio;
+	public Municipios getMunicipio() {
+		return municipio;
 	}
 
-	public void setId_municipio(Municipios id_municipio) {
-		this.id_municipio = id_municipio;
+	public void setMunicipio(Municipios municipio) {
+		this.municipio = municipio;
 	}
 
-	public Departamentos getId_departamento() {
-		return id_departamento;
+	public Departamentos getDepartamento() {
+		return departamento;
 	}
 
-	public void setId_departamento(Departamentos id_departamento) {
-		this.id_departamento = id_departamento;
+	public void setDepartamento(Departamentos departamento) {
+		this.departamento = departamento;
 	}
 	
+	//delegate para convertir fecha
+	/*
+	public String getFechaDelegate(){
+		if(this.fecha_nac == null){
+			return "";
+		}
+		else{
+			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+			String shortdate = sdf.format(this.fecha_nac .getTime());
+			return shortdate;
+		}
+	}
+	*/
+	
+	public String getEdadDelegate() {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(this.fecha_nac);
+		if (this.fecha_nac == null) return "";
+		else {
+			LocalDate localFnacimiento = LocalDateTime.ofInstant(cal.toInstant(), cal.getTimeZone().toZoneId()).toLocalDate();
+			int edad = Period.between(localFnacimiento, LocalDate.now()).getYears();
+			return new Integer(edad).toString();
+		}
+	}
 	
 }

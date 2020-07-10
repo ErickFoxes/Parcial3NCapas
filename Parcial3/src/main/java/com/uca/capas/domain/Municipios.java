@@ -18,9 +18,10 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(schema="public",name="TB_MUNICIPIOS")
 public class Municipios {
-	
+	/*
 	@OneToMany(mappedBy="id_municipio",fetch=FetchType.EAGER)
 	private List<Estudiante> estudiantes;
+	*/
 	
 	@OneToMany(mappedBy="id_municipio")
 	private List<Escuelas> escuelas;
@@ -30,7 +31,7 @@ public class Municipios {
 	
 	@Id
 	@Column(name="id_municipio")
-	private int id_municipio;
+	private Integer id_municipio;
 	
 	@Size(message="Este campo no debe tener mas de 30 caracteres", max=30)
 	@NotEmpty(message="El campo primer nombre no puede estar vacío")
@@ -47,11 +48,11 @@ public class Municipios {
 		super();
 	}
 
-	public int getId_municipio() {
+	public Integer getId_municipio() {
 		return id_municipio;
 	}
 
-	public void setId_municipio(int id_municipio) {
+	public void setId_municipio(Integer id_municipio) {
 		this.id_municipio = id_municipio;
 	}
 

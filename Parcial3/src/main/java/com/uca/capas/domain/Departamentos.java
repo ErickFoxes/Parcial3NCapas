@@ -12,11 +12,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(schema="public",name="TB_DEPARTAMENTOS")
+@Table(schema="public",name="TB_DEPARTAMENTO")
 public class Departamentos {
-	
+	/*
 	@OneToMany(mappedBy="id_departamento",fetch=FetchType.EAGER)
-	private List<Estudiante> estudiantes;
+	private List<Estudiante> estudiantes;*/
 	
 	@OneToMany(mappedBy="id_departamento")
 	private List<Municipios> municipios;
@@ -29,7 +29,7 @@ public class Departamentos {
 	
 	@Id
 	@Column(name="id_departamento")
-	private int id_departamento;
+	private Integer id_departamento;
 	
 	@Size(message="Este campo no debe tener mas de 30 caracteres", max=30)
 	@NotEmpty(message="El campo primer nombre no puede estar vacío")
@@ -40,13 +40,15 @@ public class Departamentos {
 		super();
 	}
 
-	public int getId_departamento() {
+	public Integer getId_departamento() {
 		return id_departamento;
 	}
 
-	public void setId_departamento(int id_departamento) {
+	public void setId_departamento(Integer id_departamento) {
 		this.id_departamento = id_departamento;
 	}
+
+
 
 	public String getNombre_departamento() {
 		return nombre_departamento;
