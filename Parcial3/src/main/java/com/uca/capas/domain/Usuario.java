@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -27,19 +29,21 @@ public class Usuario {
 	private int id_usuario;
 	
 	@Size(message="Este campo no debe tener mas de 1 caracter", max=1)
+	@Max(1)
+	@Min(0)
 	@NotEmpty(message="El campo rol no puede estar vacío")
 	@Column(name="rol")
 	private int rol;
 	
 	@Size(message="Este campo no debe tener mas de 20 caracteres", max=20)
 	@NotEmpty(message="El campo nombre de usuario no puede estar vacío")
-	@Column(name="nombre_usuario")
-	private String nombre_usuario;
+	@Column(name="nombre_usario")
+	private String username;
 	
 	@Size(message="Este campo no debe tener mas de 25 caracteres", max=25)
 	@NotEmpty(message="El campo contraseña no puede estar vacío")
 	@Column(name="contrasenna")
-	private String contrasenna;
+	private String pass;
 	
 	@Size(message="Este campo no debe tener mas de 20 caracteres", max=20)
 	@NotEmpty(message="El campo nombre no puede estar vacío")
@@ -105,21 +109,37 @@ public class Usuario {
 		this.rol = rol;
 	}
 
-	public String getNombre_usuario() {
-		return nombre_usuario;
+
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getContrasenna() {
-		return contrasenna;
+
+	public String getPass() {
+		return pass;
 	}
 
-	public void setContrasenna(String contrasenna) {
-		this.contrasenna = contrasenna;
+
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
+
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+
 
 	public String getNombre() {
 		return nombre;
