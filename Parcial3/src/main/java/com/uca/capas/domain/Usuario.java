@@ -26,20 +26,19 @@ public class Usuario {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id_usuario;
 	
-	@Size(message="Este campo no debe tener mas de 1 caracter", max=1)
-	@NotEmpty(message="El campo rol no puede estar vacío")
-	@Column(name="rol")
-	private int rol;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_rol")
+	private Rol id_rol;
 	
 	@Size(message="Este campo no debe tener mas de 20 caracteres", max=20)
 	@NotEmpty(message="El campo nombre de usuario no puede estar vacío")
-	@Column(name="nombre_usario")
+	@Column(name="nombre_usuario")
 	private String nombre_usuario;
 	
 	@Size(message="Este campo no debe tener mas de 25 caracteres", max=25)
 	@NotEmpty(message="El campo contraseña no puede estar vacío")
-	@Column(name="contrasenna")
-	private String contrasenna;
+	@Column(name="pass")
+	private String pass;
 	
 	@Size(message="Este campo no debe tener mas de 20 caracteres", max=20)
 	@NotEmpty(message="El campo nombre no puede estar vacío")
@@ -99,14 +98,6 @@ public class Usuario {
 		this.id_usuario = id_usuario;
 	}
 
-	public int getRol() {
-		return rol;
-	}
-
-	public void setRol(int rol) {
-		this.rol = rol;
-	}
-
 	public String getNombre_usuario() {
 		return nombre_usuario;
 	}
@@ -115,12 +106,12 @@ public class Usuario {
 		this.nombre_usuario = nombre_usuario;
 	}
 
-	public String getContrasenna() {
-		return contrasenna;
+	public String getPass() {
+		return pass;
 	}
 
-	public void setContrasenna(String contrasenna) {
-		this.contrasenna = contrasenna;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 	public String getNombre() {
@@ -186,5 +177,15 @@ public class Usuario {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+
+	public Rol getId_rol() {
+		return id_rol;
+	}
+
+	public void setId_rol(Rol id_rol) {
+		this.id_rol = id_rol;
+	}
+	
+	
 	
 }

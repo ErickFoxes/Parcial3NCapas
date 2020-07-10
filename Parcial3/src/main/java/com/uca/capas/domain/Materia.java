@@ -35,7 +35,7 @@ public class Materia {
 		
 	}
 	
-	
+	//getters y setters
 	public List<Notas> getNotas() {
 		return notas;
 	}

@@ -39,7 +39,7 @@ public class MateriaServicelmpl implements MateriaService{
 	@Transactional
 	public void updateMateria(Materia materia) throws DataAccessException {
 		// TODO Auto-generated method stub
-		materiaDAO.updateUsuario(materia);
+		materiaDAO.updateMateria(materia);
 	}
 	
 	

@@ -59,7 +59,7 @@ public class MateriaDAOlmpl implements MateriaDAO {
 	}
 
 	@Override
-	public void updateUsuario(Materia materia) throws DataAccessException {
+	public void updateMateria(Materia materia) throws DataAccessException {
 		// TODO Auto-generated method stub
 		Object[] parametros = new Object [] {materia.getId_materia(), materia.getNombre_materia()};
 		jdbcTemplate.update(sql,parametros);

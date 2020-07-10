@@ -8,9 +8,11 @@
 
 	<h1>ACTUALIZAR UN USUARIO</h1>
 	
-	<form th:action="@{/actualizarUsuario}" th:object="${usuario}" method="POST">
-		<div style="border: 1px solid black; padding:20px;">
-		
+	<form th:action="@{/ActualizarUsuario}" th:object="${usuario}" method="POST">
+	
+		<label th:text="id Usuario"></label><br/>
+		<input type="number" placeholder="id" th:field="${usuario.id_usuario}"/><br/>
+	
 		<label th:text="Nombre Usuario"></label><br/>
 		<input type="text" placeholder="nombre usuario" th:field="${usuario.nombre_usuario}"/><br/>
 		
@@ -28,11 +30,14 @@
 		
 		<label th:text="'Fecha de nacimiento'"></label><br/>
 		<input type="date" th:field="${usuario.fecha_nac}" />
-		</div><br/>
+		<br/>
 		
-		<label th:text="rol"></label><br/>
-		<input type="number" placeholder="rol" th:field="${usuario.rol}"/><br/>
-	
+		<label th:text="Rol"></label><br/>
+		<select th:field="${usuario.roles}" multiple="multiple">
+			<option th:each="rol :${roles}" th:value="${rol.id_rol}" th:text="${rol.rol}">
+			</option>
+		</select><br/>
+		
 		<label th:text="Departamento"></label><br/>
 		<input type="text" placeholder="departamento" th:field="${usuario.id_departamento}"/><br/>
 		
@@ -50,7 +55,8 @@
 	
 		</div>
 		
-		<input type="submit" value="Guardar">  
+		<input type="submit" value="Guardar"> 
+		
 	</form>
 
 

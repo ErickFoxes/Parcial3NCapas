@@ -34,21 +34,21 @@ public class JPAConfiguration {
 	}	
 	
 	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/PROYECTO");
+		dataSource.setUsername("postgres");
+		dataSource.setPassword("00046416");
+		return dataSource;
+	}
+	
+	
+	@Bean
 	JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(entityManagerFactory);
 		return transactionManager;
-	}
-	
-	@Bean
-	public DataSource dataSource() {
-		DriverManagerDataSource dataSource= new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/Holi");
-		dataSource.setUsername("postgres");
-		dataSource.setPassword("00046416");
-		
-		return dataSource;
 	}
 	
 	Properties hibernateProperties() {

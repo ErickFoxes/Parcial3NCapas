@@ -6,7 +6,7 @@
 </head>
 <body>
 
-	<h1>AÑADIR UN NUEVO USUARIO</h1>
+	<h1>AGREGAR UN NUEVO USUARIO</h1>
 	
 	<form th:action="@{/guardarUsuario}" th:object="${usuario}" method="POST">
 	
@@ -32,9 +32,12 @@
 		<input type="date" th:field="${usuario.fecha_nac}" />
 		<br/>
 		
-		<label th:text="rol"></label><br/>
-		<input type="number" placeholder="rol" th:field="${usuario.rol}"/><br/>
-	
+		<label th:text="Rol"></label><br/>
+		<select th:field="${usuario.roles}" multiple="multiple">
+			<option th:each="rol :${roles}" th:value="${rol.id_rol}" th:text="${rol.rol}">
+			</option>
+		</select><br/>
+		
 		<label th:text="Departamento"></label><br/>
 		<input type="text" placeholder="departamento" th:field="${usuario.id_departamento}"/><br/>
 		

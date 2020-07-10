@@ -6,7 +6,7 @@
 </head>
 <body>
 	
-	<label>Catalogo de Centros Escolares</label>
+	<h2>Catalogo de Centros Escolares</h2>
 	
 	<table>
 		<thead>
@@ -15,14 +15,41 @@
 				<th>Nombre</th>
 				<th>Departamento</th>
 				<th>Municipio</th>
+				<th>Opcion</th>
 			</tr>
 		</thead>
 		<tbody>
+			<th  th:each="escuela : ${escuelas}">
+				<td th:text="${escuela.id_centro_escolar}"></td>
+				<td th:text="${escuela.nombre_centro_escolar}"></td>
+				
+				<td>
+					<th:block th:each="dep,iter: ${escuela.departamentos}">
+    					<label th:text="${dep.nombre_departamento}"></label>
+  					</th:block>
+				</td>
+				
+				<td>
+					<th:block th:each="muni,iter: ${escuela.municipios}">
+    					<label th:text="${muni.nombre_municipio}"></label>
+  					</th:block>
+				</td>
+				
+				<td>
+					<form th:action="@{/EditarEscuela}" method="post">
+						<input type="submit" value="Editar">
+					</form>	
+				
+				</td>
+			</th>
 			
 		</tbody>
 	</table>
 	<br>
-	<a href="/main">Regresar</a>
+	
+	<form th:action="@{/AñadirEscuela}" method="post">
+		<input type="submit" value="Agregar nueva Escuela">
+	</form>
 	
 </body>
 </html>

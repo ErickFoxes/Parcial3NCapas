@@ -6,27 +6,32 @@
 </head>
 <body>
 	
-	<label>Catalogo de Materias</label>
+	<h2>Catalogo de Materias</h2>
 	
 	<table>
 		<thead>
 			<th>Codigo</th>
 			<th>Materia</th>
-			<th>Opciones</th>
+			<th>Opcion</th>
 		</thead>
 		
-		<th:block th:each="materia, row:${materias}">
+		<th:block th:each="materia , row:${materias}">
 			<tr>
-				<th th:text="${materia.id_materia}"/>
-				<th th:text="${materia.nombre_materia}"/>
+				<th th:text="*{id_materia}"/>
+				<th th:text="*{nombre_materia}"/>
+				<th>
+					<form th:action="@{/EditarMateria}" method="post">
+						<input type="submit" value="Editar">
+					</form>
+				</th>
 			</tr>
 		</th:block>
 	</table>
 	
 	<br>
 	
-	<form th:action="@{/}" method="post">
-		<input type="submit" value="Regresar">
+	<form th:action="@{/AñadirMateria}" method="post">
+		<input type="submit" value="Agregar nueva Materia">
 	</form>
 
 </body>

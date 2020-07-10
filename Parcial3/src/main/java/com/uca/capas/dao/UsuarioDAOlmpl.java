@@ -23,7 +23,7 @@ public class UsuarioDAOlmpl implements UsuarioDAO {
 	@PersistenceContext(unitName="capas")
 	private EntityManager entityManager;
 	
-	public static final String sql = "UPDATE public.TB_USUARIO SET rol = ?, nombre_usuario = ?, nombre = ?, apellido = ?, edad = ?, fecha_nac = ?, id_departamento = ?, id_municipio = ?, direccion_residencia = ?, estado = ? WEHRE id_usuario = ?";
+	public static final String sql = "UPDATE public.TB_USUARIO SET rol = ?, nombre_usuario = ?, pass = ?, nombre = ?, apellido = ?, edad = ?, fecha_nac = ?, id_departamento = ?, id_municipio = ?, direccion_residencia = ?, estado = ? WEHRE id_usuario = ?";
 
 	@Override
 	public List<Usuario> findAllUsers() throws DataAccessException {
@@ -64,7 +64,7 @@ public class UsuarioDAOlmpl implements UsuarioDAO {
 	@Transactional
 	public void updateUsuario(Usuario usuario) throws DataAccessException {
 		// TODO Auto-generated method stub
-		Object[] parametros = new Object [] {usuario.getId_usuario(), usuario.getRol() ,usuario.getNombre(), usuario.getApellido(), usuario.getEdad(), usuario.getFecha_nac(), usuario.getId_departamento(), usuario.getId_municipio(), usuario.getDireccion_residencia(), usuario.getEstadoDelegate()};
+		Object[] parametros = new Object [] {usuario.getId_usuario(), usuario.getId_rol(), usuario.getNombre_usuario(), usuario.getPass() ,usuario.getNombre(), usuario.getApellido(), usuario.getEdad(), usuario.getFecha_nac(), usuario.getId_departamento(), usuario.getId_municipio(), usuario.getDireccion_residencia(), usuario.getEstadoDelegate()};
 		jdbcTemplate.update(sql,parametros);
 	}
 

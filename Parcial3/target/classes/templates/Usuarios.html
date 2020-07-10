@@ -6,30 +6,69 @@
 </head>
 <body>
 
-	<label>Catalogo de Usuarios</label>
+	<h2>Catalogo de Usuarios</h2>
 	
 	<table>
 		<thead>
 			<tr>
 				<th>id usuario</th>
-				<th>Rol</th>
 				<th>Nombre usuario</th>
+				<th>Contrasenna</th>
 				<th>Nombre</th>
 				<th>Apellido</th>
 				<th>Edad</th>
 				<th>Fecha nacimiento</th>
+				<th>Rol</th>
 				<th>Departamento</th>
 				<th>Municipio</th>
 				<th>Direccion</th>
 				<th>Estado</th>
+				<th>Opcion</th>
 			</tr>
 		</thead>
 		<tbody>
-			
+			<tr th:each="usuario : ${usuarios}">
+				<td th:text="${usuario.id_usuario}"></td>
+				<td th:text="${usuario.nombre_usuario}"></td>
+				<td th:text="${usuario.pass}"></td>
+				<td th:text="${usuario.nombre}"></td>
+				<td th:text="${usuario.apellido}"></td>
+				<td th:text="${usuario.edad}"></td>
+				<td th:text="${usuario.fecha_nac}"></td>
+				<td>
+					<th:block th:each="rol,iter: ${usuario.roles}">
+    					<label th:text="${rol.rol}"></label>
+  					</th:block>
+				</td>
+				
+				<td>
+					<th:block th:each="dep,iter: ${usuario.departamentos}">
+    					<label th:text="${dep.nombre_departamento}"></label>
+  					</th:block>
+				</td>
+				
+				<td>
+					<th:block th:each="muni,iter: ${usuario.municipios}">
+    					<label th:text="${muni.nombre_municipio}"></label>
+  					</th:block>
+				</td>
+				
+				<td th:text="${usuario.direccion_residencia}"></td>
+				
+				<td>
+					<form th:action="@{/EditarUsuario}" method="post">
+						<input type="submit" value="Editar">
+					</form>
+				</td>
+			</tr>
 		</tbody>
 	</table>
+	
 	<br>
-	<a href="/main">Regresar</a>
+	
+	<form th:action="@{/AñadirUsuario}" method="post">
+	<input type="submit" value="Agregar nuevo Usuario">
+	</form>
 	
 </body>
 </html>

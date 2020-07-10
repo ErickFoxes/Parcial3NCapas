@@ -16,6 +16,6 @@ public interface MateriaDAO {
 	
 	public void saveMateria(Materia materia) throws DataAccessException;
 	
-	public void updateUsuario(Materia materia) throws DataAccessException;
+	public void updateMateria(Materia materia) throws DataAccessException;
 
 }
