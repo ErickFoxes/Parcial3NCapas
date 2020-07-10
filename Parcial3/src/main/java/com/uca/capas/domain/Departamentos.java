@@ -22,7 +22,7 @@ public class Departamentos {
 	private List<Municipios> municipios;
 	
 	@OneToMany(mappedBy="id_departamento")
-	private List<Escuelas> escuelas;
+	private List<Escuela> escuela;
 	
 	@OneToMany(mappedBy="id_departamento")
 	private List<Usuario> usuarios;

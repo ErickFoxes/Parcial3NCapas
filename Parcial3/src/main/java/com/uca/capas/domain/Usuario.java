@@ -33,7 +33,7 @@ public class Usuario {
 	
 	@Size(message="Este campo no debe tener mas de 20 caracteres", max=20)
 	@NotEmpty(message="El campo nombre de usuario no puede estar vacío")
-	@Column(name="nombre_usuario")
+	@Column(name="nombre_usario")
 	private String nombre_usuario;
 	
 	@Size(message="Este campo no debe tener mas de 25 caracteres", max=25)
@@ -86,7 +86,9 @@ public class Usuario {
 		}
 	}
 	
-	
+	public Usuario() {
+		
+	}
 	//GETTERS Y SETTERS
 
 	public Integer getId_usuario() {

@@ -73,7 +73,7 @@ public class Estudiante {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@NotEmpty(message="El campo centro escolar de procedencia no puede estar vacío")
 	@JoinColumn(name="id_centro_escolar")
-	private Escuelas id_centro_escolar;
+	private Escuela id_centro_escolar;
 	
 	@Size(message="Este campo no debe tener mas de 50 caracteres", max=50)
 	@NotEmpty(message="El campo nombres del padre no puede estar vacío")
@@ -191,11 +191,11 @@ public class Estudiante {
 		this.cel = cel;
 	}
 
-	public Escuelas getId_centro_escolar() {
+	public Escuela getId_centro_escolar() {
 		return id_centro_escolar;
 	}
 
-	public void setId_centro_escolar(Escuelas id_centro_escolar) {
+	public void setId_centro_escolar(Escuela id_centro_escolar) {
 		this.id_centro_escolar = id_centro_escolar;
 	}
 

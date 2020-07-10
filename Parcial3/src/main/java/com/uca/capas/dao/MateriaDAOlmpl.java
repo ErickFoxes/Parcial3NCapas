@@ -4,13 +4,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-
-import com.uca.capas.domain.Materias;
+import com.uca.capas.domain.Escuela;
+import com.uca.capas.domain.Materia;
 
 
 @Repository
@@ -21,22 +22,28 @@ public class MateriaDAOlmpl implements MateriaDAO {
 	
 	JdbcTemplate jdbcTemplate;
 	
-	public static final String sql = "UPDATE store.TB_MATERIA SET nombre_materia = ? WEHRE id_materia = ?";
+	public static final String sql = "UPDATE public.TB_MATERIA SET nombre_materia = ? WEHRE id_materia = ?";
 
 	@Override
-	public List<Materias> findAllSubjects() throws DataAccessException {
+	public List<Materia> findAllSubjects() throws DataAccessException {
 		// TODO Auto-generated method stub
-		return null;
+		StringBuffer sb = new StringBuffer();
+		sb.append("select * from  public.TB_MATERIA");
+		
+		Query query = entityManager.createNativeQuery(sb.toString(),Escuela.class);
+		List<Materia> result = query.getResultList();
+		return result;
 	}
 
 	@Override
-	public Materias findSubject(Integer code) throws DataAccessException {
+	public Materia findSubject(Integer code) throws DataAccessException {
 		// TODO Auto-generated method stub
-		return null;
+		Materia materia = entityManager.find(Materia.class, code);
+		return materia;
 	}
 
 	@Override
-	public void saveMateria(Materias materia) throws DataAccessException {
+	public void saveMateria(Materia materia) throws DataAccessException {
 		// TODO Auto-generated method stub
 		try {
 			if(materia.getId_materia() == null) {
@@ -52,7 +59,7 @@ public class MateriaDAOlmpl implements MateriaDAO {
 	}
 
 	@Override
-	public void updateUsuario(Materias materia) throws DataAccessException {
+	public void updateUsuario(Materia materia) throws DataAccessException {
 		// TODO Auto-generated method stub
 		Object[] parametros = new Object [] {materia.getId_materia(), materia.getNombre_materia()};
 		jdbcTemplate.update(sql,parametros);

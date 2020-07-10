@@ -8,17 +8,19 @@
 
 	<h1>AÑADIR UN NUEVO CENTRO ESCOLAR</h1>
 	
-	<form th:action="@{/guardarCentroEscolar}" th:object="${escuelas}" method="POST">
-		<div style="border: 1px solid black; padding:20px;">
+	<form th:action="@{/guardarCentroEscolar}" th:object="${Escuelas}" method="POST">
+	
+		<label >id Centro Escolar</label><br/>
+		<input type="number" placeholder="id" th:field="${Escuelas.id_centro_escolar}"/><br/>
 		
-		<label th:text="Nombre de Centro Escolar"></label><br/>
-		<input type="text" placeholder="centro escolar" th:field="${escuelas.nombre_centro_escolar}"/><br/>
+		<label >Nombre de Centro Escolar</label><br/>
+		<input type="text" placeholder="centro escolar" th:field="${Escuelas.nombre_centro_escolar}"/><br/>
 		
-		<label th:text="Departamento"></label><br/>
-		<input type="text" placeholder="departamento" th:field="${escuelas.id_departamento}"/><br/>
+		<label >Departamento</label><br/>
+		<input type="text" placeholder="departamento" th:field="${Escuelas.id_departamento}"/><br/>
 		
-		<label th:text="Municipio"></label><br/>
-		<input type="text" placeholder="municipio" th:field="${escuelas.id_municipio}"/><br/>
+		<label >Municipio</label><br/>
+		<input type="text" placeholder="municipio" th:field="${Escuelas.id_municipio}"/><br/>
 		
 		<input type="submit" value="Guardar">  
 	</form>

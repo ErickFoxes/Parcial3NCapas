@@ -16,51 +16,60 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(schema="public",name="TB_MUNICIPIOS")
-public class Municipios {
-	
-	@OneToMany(mappedBy="id_municipio",fetch=FetchType.EAGER)
+@Table(schema="public",name="TB_CENTROS_ESCOLARES")
+public class Escuela {
+
+	@OneToMany(mappedBy="id_centro_escolar",fetch=FetchType.EAGER)
 	private List<Estudiante> estudiantes;
 	
-	@OneToMany(mappedBy="id_municipio")
-	private List<Escuela> escuela;
-	
-	@OneToMany(mappedBy="id_municipio")
-	private List<Usuario> usuarios;
-	
 	@Id
-	@Column(name="id_municipio")
-	private int id_municipio;
+	@Column(name="id_centro_escolar")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id_centro_escolar;
 	
 	@Size(message="Este campo no debe tener mas de 30 caracteres", max=30)
 	@NotEmpty(message="El campo primer nombre no puede estar vacío")
-	@Column(name="nombre_municipio")
-	private String nombre_municipio;
+	@Column(name="nombre_centro_escolar")
+	private String nombre_centro_escolar;
+	
+	@NotEmpty(message="El campo municipio no puede estar vacío")
+	@JoinColumn(name="id_municipio")
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Municipios id_municipio;
 	
 	@NotEmpty(message="El campo departamento no puede estar vacío")
 	@JoinColumn(name="id_departamento")
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Departamentos id_departamento;
 	
-
-	public Municipios() {
-		super();
+	//CONSTRUCTOR
+	public Escuela() {
+		
+	}
+	
+	//GETTERS Y SETTERS
+	public Integer getId_escuela() {
+		return id_centro_escolar;
 	}
 
-	public int getId_municipio() {
+	public void setId_escuela(Integer id_escuela) {
+		this.id_centro_escolar = id_escuela;
+	}
+
+	public String getNombre_centro_escolar() {
+		return nombre_centro_escolar;
+	}
+
+	public void setNombre_centro_escolar(String nombre_centro_escolar) {
+		this.nombre_centro_escolar = nombre_centro_escolar;
+	}
+
+	public Municipios getId_municipio() {
 		return id_municipio;
 	}
 
-	public void setId_municipio(int id_municipio) {
+	public void setId_municipio(Municipios id_municipio) {
 		this.id_municipio = id_municipio;
-	}
-
-	public String getNombre_municipio() {
-		return nombre_municipio;
-	}
-
-	public void setNombre_municipio(String nombre_municipio) {
-		this.nombre_municipio = nombre_municipio;
 	}
 
 	public Departamentos getId_departamento() {

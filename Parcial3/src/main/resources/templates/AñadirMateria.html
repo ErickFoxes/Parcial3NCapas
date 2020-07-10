@@ -7,14 +7,24 @@
 <body>
 	<h1>AÑADIR UN NUEVA MATERIA</h1>
 	
-	<form th:action="@{/guardarMateria}" th:object="${materias}" method="POST">
-		<div style="border: 1px solid black; padding:20px;">
+	<form action="#" th:action="@{/guardarMateria}" th:object="${materia}" method="post">
+		<div>
+			<label for="id_m"><font color="#000000" face ="Arial" >id Materia: </font>  </label>
+			<input type="text" th:field="*{id_materia}" id="id_m" required >
+			<span th:errors ="*{id_materia}" style="color:#FF0000"></span>
+		</div>
 		
-		<label th:text="Nombre de Materisr"></label><br/>
-		<input type="text" placeholder="materia" th:field="${materias.nombre_materia}"/><br/>
+		<br>
+		
+		<div>
+			<label for="marca"> <font color="#000000" face ="Arial">Materia: </font>  </label>
+			<input type="text" th:field="*{nombre_materia}" id="marca" required >
+			<span th:errors ="*{nombre_materia}" style="color:#FF0000"></span>
+		</div>
 		
 		<input type="submit" value="Guardar">  
+		
 	</form>
-
+	
 </body>
 </html>

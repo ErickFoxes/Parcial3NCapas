@@ -34,7 +34,7 @@ public class Notas {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_materia")
-	private Materias materia;
+	private Materia materia;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_expediente")
@@ -42,11 +42,11 @@ public class Notas {
 	
 	
 
-	public Materias getMateria() {
+	public Materia getMateria() {
 		return materia;
 	}
 
-	public void setMateria(Materias materia) {
+	public void setMateria(Materia materia) {
 		this.materia = materia;
 	}
 

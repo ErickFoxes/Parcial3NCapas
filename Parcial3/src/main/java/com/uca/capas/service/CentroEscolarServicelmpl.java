@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.uca.capas.dao.CentroEscolarDAO;
-import com.uca.capas.domain.Escuelas;
+import com.uca.capas.domain.Escuela;
 
 @Service
 public class CentroEscolarServicelmpl implements CentroEscolarService{
@@ -17,27 +17,27 @@ public class CentroEscolarServicelmpl implements CentroEscolarService{
 	CentroEscolarDAO centroEscolarDAO;
 
 	@Override
-	public List<Escuelas> findAllSchools() throws DataAccessException {
+	public List<Escuela> findAllSchools() throws DataAccessException {
 		// TODO Auto-generated method stub
 		return centroEscolarDAO.findAllSchools();
 	}
 
 	@Override
-	public Escuelas findOneSchool(Integer code) throws DataAccessException {
+	public Escuela findOneSchool(Integer code) throws DataAccessException {
 		// TODO Auto-generated method stub
 		return centroEscolarDAO.findOneSchool(code);
 	}
 
 	@Override
 	@Transactional
-	public void saveEscuela(Escuelas escuela) throws DataAccessException {
+	public void saveEscuela(Escuela escuela) throws DataAccessException {
 		// TODO Auto-generated method stub
 		centroEscolarDAO.saveEscuela(escuela);
 	}
 
 	@Override
 	@Transactional
-	public void updateEscuela(Escuelas escuela) throws DataAccessException {
+	public void updateEscuela(Escuela escuela) throws DataAccessException {
 		// TODO Auto-generated method stub
 		centroEscolarDAO.updateEscuela(escuela);
 	}

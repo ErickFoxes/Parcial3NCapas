@@ -9,8 +9,10 @@
 	<h1>AÑADIR UN NUEVO USUARIO</h1>
 	
 	<form th:action="@{/guardarUsuario}" th:object="${usuario}" method="POST">
-		<div style="border: 1px solid black; padding:20px;">
-		
+	
+		<label th:text="id Usuario"></label><br/>
+		<input type="number" placeholder="id" th:field="${usuario.id_usuario}"/><br/>
+	
 		<label th:text="Nombre Usuario"></label><br/>
 		<input type="text" placeholder="nombre usuario" th:field="${usuario.nombre_usuario}"/><br/>
 		
@@ -28,7 +30,7 @@
 		
 		<label th:text="'Fecha de nacimiento'"></label><br/>
 		<input type="date" th:field="${usuario.fecha_nac}" />
-		</div><br/>
+		<br/>
 		
 		<label th:text="rol"></label><br/>
 		<input type="number" placeholder="rol" th:field="${usuario.rol}"/><br/>
@@ -50,7 +52,8 @@
 	
 		</div>
 		
-		<input type="submit" value="Guardar">  
+		<input type="submit" value="Guardar"> 
+		
 	</form>
 
 </body>

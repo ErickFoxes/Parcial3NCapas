@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.uca.capas.dao.MateriaDAO;
-import com.uca.capas.domain.Materias;
+import com.uca.capas.domain.Materia;
 
 @Service
 public class MateriaServicelmpl implements MateriaService{
@@ -17,27 +17,27 @@ public class MateriaServicelmpl implements MateriaService{
 	MateriaDAO materiaDAO;
 
 	@Override
-	public List<Materias> findAllSubjects() throws DataAccessException {
+	public List<Materia> findAllSubjects() throws DataAccessException {
 		// TODO Auto-generated method stub
 		return materiaDAO.findAllSubjects();
 	}
 
 	@Override
-	public Materias findSubject(Integer code) throws DataAccessException {
+	public Materia findSubject(Integer code) throws DataAccessException {
 		// TODO Auto-generated method stub
 		return materiaDAO.findSubject(code);
 	}
 
 	@Override
 	@Transactional
-	public void saveMateria(Materias materia) throws DataAccessException {
+	public void saveMateria(Materia materia) throws DataAccessException {
 		// TODO Auto-generated method stub
 		materiaDAO.saveMateria(materia);
 	}
 
 	@Override
 	@Transactional
-	public void updateMateria(Materias materia) throws DataAccessException {
+	public void updateMateria(Materia materia) throws DataAccessException {
 		// TODO Auto-generated method stub
 		materiaDAO.updateUsuario(materia);
 	}

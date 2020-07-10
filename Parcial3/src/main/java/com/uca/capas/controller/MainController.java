@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uca.capas.domain.Escuelas;
-import com.uca.capas.domain.Materias;
+import com.uca.capas.domain.Escuela;
+import com.uca.capas.domain.Materia;
 import com.uca.capas.domain.Usuario;
 import com.uca.capas.service.CentroEscolarService;
 import com.uca.capas.service.MateriaService;
@@ -36,7 +36,7 @@ public class MainController {
 	@RequestMapping ("/")
 	public ModelAndView Main() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("Materias");
+		mav.setViewName("AñadirMateria");
 		return mav;
 	}
 	
@@ -55,14 +55,14 @@ public class MainController {
 
 	//--Guardar nuevo--
 	@RequestMapping ("/guardarUsuario")
-	public ModelAndView guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result) {
+	public ModelAndView guardar(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
 			mav.setViewName("AñadirUsuario");
 		}
 		else {
-			usuarioService.saveUsuario(usuario);;
+			usuarioService.saveUsuario(usuario);
 			List<Usuario> usuarios = null;
 			try {
 				usuarios= usuarioService.findAllUsers();
@@ -70,7 +70,7 @@ public class MainController {
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-			mav.addObject("usuario", usuario);
+			mav.addObject("usuarios", usuarios);
 			mav.setViewName("Usuarios");
 		}
 		
@@ -79,7 +79,7 @@ public class MainController {
 	
 	//--Actualizar--
 	@RequestMapping ("/actualizarUsuario")
-	public ModelAndView updateMateria(@Valid @ModelAttribute Usuario Usuario, BindingResult result) {
+	public ModelAndView updateMateria(@Valid @ModelAttribute("usuario") Usuario Usuario, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
@@ -103,11 +103,12 @@ public class MainController {
 	
 	//*** MATERIA ***
 	
+	
 	//--Mostar uno--
 	@RequestMapping (value = "/mostrarUnaMateria", method = RequestMethod.POST)
 	public ModelAndView findOneMateria(@RequestParam (value = "codigo") Integer id) {
 		ModelAndView mav = new ModelAndView();
-		Materias materia = materiaService.findSubject(id);
+		Materia materia = materiaService.findSubject(id);
 		
 		mav.addObject("materia", materia);
 		mav.setViewName("Materias");
@@ -116,22 +117,22 @@ public class MainController {
 
 	//--Guardar nuevo--
 	@RequestMapping ("/guardarMateria")
-	public ModelAndView guardar(@Valid @ModelAttribute Materias materia, BindingResult result) {
+	public ModelAndView guardar(@Valid @ModelAttribute("materia") Materia materia, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
 			mav.setViewName("AñadirMateria");
 		}
 		else {
-			materiaService.saveMateria(materia);;
-			List<Materias> materias = null;
+			materiaService.saveMateria(materia);
+			List<Materia> materias = null;
 			try {
-				materias= materiaService.findAllSubjects();
+				materias = materiaService.findAllSubjects();
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-			mav.addObject("materia", materia);
+			mav.addObject("materias", materias);
 			mav.setViewName("Materias");
 		}
 		
@@ -140,7 +141,7 @@ public class MainController {
 	
 	//--Actualizar--
 	@RequestMapping ("/actualizarMateria")
-	public ModelAndView updateMateria(@Valid @ModelAttribute Materias materia, BindingResult result) {
+	public ModelAndView updateMateria(@Valid @ModelAttribute("materia") Materia materia, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
@@ -148,14 +149,14 @@ public class MainController {
 		}
 		else {
 			materiaService.updateMateria(materia);
-			List<Materias> materias = null;
+			List<Materia> materias = null;
 			try {
-				materias= materiaService.findAllSubjects();
+				materias = materiaService.findAllSubjects();
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-			mav.addObject("materias", materias);
+			mav.addObject("materias", materia);
 			mav.setViewName("Materias");
 		}
 
@@ -168,7 +169,14 @@ public class MainController {
 	@RequestMapping (value = "/mostrarUnaCentroEscolar", method = RequestMethod.POST)
 	public ModelAndView findOneEscuela(@RequestParam (value = "codigo") Integer id) {
 		ModelAndView mav = new ModelAndView();
-		Escuelas escuela = centroEscolarService.findOneSchool(id);
+		Escuela escuela = null;
+		
+		try {
+			escuela = centroEscolarService.findOneSchool(id);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		mav.addObject("escuela", escuela);
 		mav.setViewName("Escuelas");
 		return mav;
@@ -176,7 +184,7 @@ public class MainController {
 
 	//--Guardar nuevo--
 	@RequestMapping ("/guardarCentroEscolar")
-	public ModelAndView guardarEscuela(@Valid @ModelAttribute Escuelas escuela, BindingResult result) {
+	public ModelAndView guardarEscuela(@Valid @ModelAttribute("escuela") Escuela escuela, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
@@ -184,15 +192,15 @@ public class MainController {
 		}
 		else {
 			centroEscolarService.saveEscuela(escuela);
-			List<Escuelas> escuelas = null;
+			List<Escuela> escuelas = null;
 			try {
 				escuelas = centroEscolarService.findAllSchools();
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-			mav.addObject("escuela", escuela);
-			mav.setViewName("Escuelas");
+			mav.addObject("escuelas", escuela);
+			mav.setViewName("CentrosEscolares");
 		}
 		
 		return mav;
@@ -200,7 +208,7 @@ public class MainController {
 	
 	//--Actualizar--
 	@RequestMapping ("/actualizarCentroEscolar")
-	public ModelAndView updateEscuela(@Valid @ModelAttribute Escuelas escuela, BindingResult result) {
+	public ModelAndView updateEscuela(@Valid @ModelAttribute("escuela") Escuela escuela, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
@@ -208,7 +216,7 @@ public class MainController {
 		}
 		else {
 			centroEscolarService.updateEscuela(escuela);
-			List<Escuelas> escuelas = null;
+			List<Escuela> escuelas = null;
 			try {
 				escuelas = centroEscolarService.findAllSchools();
 			}
