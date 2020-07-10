@@ -24,7 +24,7 @@ public class Usuario {
 	@Id
 	@Column(name="id_usuario")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_usuario;
+	private Integer id_usuario;
 	
 	@Size(message="Este campo no debe tener mas de 1 caracter", max=1)
 	@NotEmpty(message="El campo rol no puede estar vacío")
@@ -89,11 +89,11 @@ public class Usuario {
 	
 	//GETTERS Y SETTERS
 
-	public int getId_usuario() {
+	public Integer getId_usuario() {
 		return id_usuario;
 	}
 
-	public void setId_usuario(int id_usuario) {
+	public void setId_usuario(Integer id_usuario) {
 		this.id_usuario = id_usuario;
 	}
 

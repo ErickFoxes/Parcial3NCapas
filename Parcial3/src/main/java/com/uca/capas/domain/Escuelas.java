@@ -25,7 +25,7 @@ public class Escuelas {
 	@Id
 	@Column(name="id_centro_escolar")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_centro_escolar;
+	private Integer id_centro_escolar;
 	
 	@Size(message="Este campo no debe tener mas de 30 caracteres", max=30)
 	@NotEmpty(message="El campo primer nombre no puede estar vacío")
@@ -46,11 +46,11 @@ public class Escuelas {
 		super();
 	}
 
-	public int getId_escuela() {
+	public Integer getId_escuela() {
 		return id_centro_escolar;
 	}
 
-	public void setId_escuela(int id_escuela) {
+	public void setId_escuela(Integer id_escuela) {
 		this.id_centro_escolar = id_escuela;
 	}
 
