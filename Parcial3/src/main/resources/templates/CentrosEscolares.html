@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Catalogo de C.E</title>
+</head>
+<body>
+	
+	<h2>Catalogo de Centros Escolares</h2>
+	
+	
+	<table>
+		<thead>
+			<th>id Centro escolar</th>
+			<th>Nombre</th>
+			<th>Departamento</th>
+			<th>Municipio</th>
+			<th>Opcion</th>
+		</thead>
+		
+		<th:block th:each="escuela, row:${escuela.departamento}, ${escuela.municipio}"> 
+			<tr>
+				<th th:text="${escuela.id_centro_escolar}"/>
+				<th th:text="${escuela.nombre_centro_escolar}"/>
+				<th th:text="${escuela.departamento.departamento_id}"/>
+				<th th:text="${escuela.municipio.municipio_id}"/>
+				<th>
+					<form method="post" th:action="@{/actualizarEscuela2}">
+					<input type="hidden" name="id_centro_escolar" th:value=${materia.id_centro_escolar} >
+						<input type="submit" value="Editar">
+					</form>
+				</th>
+			</tr>
+		</th:block> 
+	</table> 
+	
+	<br>
+	
+	<form th:action="@{/AgregarEscuela}" method="post">
+		<input type="submit" value="Agregar nueva Escuela">
+	</form>
+
+	
+</body>
+</html>

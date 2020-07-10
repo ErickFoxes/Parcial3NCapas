@@ -54,11 +54,24 @@ public class EstudianteController {
 		mav.setViewName("Estudiante/indexEstudiante");
 		return mav;
 	}*/
+	@RequestMapping("/index")
+	public ModelAndView inicio1() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("main");
+		return mav;
+	}
 	
 	@RequestMapping("/buscar")
 	public ModelAndView ingresarNota1() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("buscarAlumno");
+		return mav;
+	}
+	
+	@RequestMapping("/buscar2")
+	public ModelAndView inicio2() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admi");
 		return mav;
 	}
 	

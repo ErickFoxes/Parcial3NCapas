@@ -19,7 +19,7 @@ import com.uca.capas.domain.Notas;
 public class NotasDaoImpl implements NotasDao{
 
 	@Autowired
-	MateriaDAO materiaDao;
+	MateriasDAO materiaDao;
 	
 	@Autowired
 	EstudianteDAO estudianteDao;

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>agregar C.E </title>
+</head>
+<body>
+
+	<h1>AGREGAR UN NUEVO CENTRO ESCOLAR</h1>
+	
+	<form th:action="@{/guardarEscuela}" th:object="${escuela}" method="post">
+		<div>
+			<label for="id_centro_escolar"><font color="#000000" face ="Arial" >id Escuela: </font>  </label>
+			<input type="text" th:field="*{id_centro_escolar}" id="id_centro_escolar" required >
+			<span th:errors ="*{id_centro_escolar}" style="color:#FF0000"></span>
+		</div>
+		
+		<br>
+		
+		<div>
+			<label for="nombre_centro_escolar"> <font color="#000000" face ="Arial">Nombre: </font>  </label>
+			<input type="text" th:field="*{nombre_centro_escolar}" id="nombre_centro_escolar" required >
+			<span th:errors ="*{nombre_centro_escolar}" style="color:#FF0000"></span>
+		</div>
+		
+		<br>
+		
+		<div>
+			<label for="id_departamento"> <font color="#000000" face ="Arial">Departamento: </font>  </label>
+			<input type="text" th:field="*{id_departamento}" id="id_departamento" required >
+			<span th:errors ="*{id_departamento}" style="color:#FF0000"></span>
+		</div>
+		
+		<br>
+				
+		<div>
+			<label for="id_municipio"> <font color="#000000" face ="Arial">Municipio:</font>  </label>
+			<input type="text" th:field="*{id_municipio}" id="id_municipio" required >
+			<span th:errors ="*{id_municipio}" style="color:#FF0000"></span>
+		</div>
+		
+		<input type="submit" value="Guardar">  
+		
+	</form>
+	
+
+</body>
+</html>

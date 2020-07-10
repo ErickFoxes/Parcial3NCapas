@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Agregar Materia</title>
+</head>
+<body>
+	<h1>AGREGAR UN NUEVA MATERIA</h1>
+	
+	<form action="#" th:action="@{/guardarMateria}" th:object="${materia}" method="post">
+		<div>
+			<label for="id_materia"><font color="#000000" face ="Arial" >id Materia: </font>  </label>
+			<input type="text" th:field="*{id_materia}" id="id_materia" required >
+			<span th:errors ="*{id_materia}" style="color:#FF0000"></span>
+		</div>
+		
+		<br>
+		
+		<div>
+			<label for="nombre_materia"> <font color="#000000" face ="Arial">Materia: </font>  </label>
+			<input type="text" th:field="*{nombre_materia}" id="nombre_materia" required >
+			<span th:errors ="*{nombre_materia}" style="color:#FF0000"></span>
+		</div>
+		
+		<br>
+		
+		<input type="submit" value="Guardar">  
+		
+	</form>
+	
+</body>
+</html>

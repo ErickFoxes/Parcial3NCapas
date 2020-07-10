@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>agregar C.E </title>
+</head>
+<body>
+
+	<h1>AGREGAR UN NUEVO CENTRO ESCOLAR</h1>
+	
+	<form th:action="@{/guardarCentroEscolar}" th:object="${Escuelas}" method="POST">
+	
+		<label >id Centro Escolar</label><br/>
+		<input type="number" placeholder="id" th:field="${Escuelas.id_centro_escolar}"/><br/>
+		
+		<label >Nombre de Centro Escolar</label><br/>
+		<input type="text" placeholder="centro escolar" th:field="${Escuelas.nombre_centro_escolar}"/><br/>
+		
+		<label >Departamento</label><br/>
+		<input type="text" placeholder="departamento" th:field="${Escuelas.id_departamento}"/><br/>
+		
+		<label >Municipio</label><br/>
+		<input type="text" placeholder="municipio" th:field="${Escuelas.id_municipio}"/><br/>
+		
+		<input type="submit" value="Guardar">  
+	</form>
+
+</body>
+</html>

@@ -7,7 +7,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.uca.capas.dao.EstudianteDAO;
-import com.uca.capas.dao.MateriaDAO;
+import com.uca.capas.dao.MateriasDAO;
 import com.uca.capas.dao.NotasDao;
 import com.uca.capas.domain.Estudiante;
 import com.uca.capas.domain.Materias;
@@ -24,7 +24,7 @@ public class NotasServiceImpl implements NotasService{
 	NotasRepo notasRepo;
 	
 	@Autowired
-	MateriaDAO materiaDao;
+	MateriasDAO materiaDao;
 	
 	@Autowired
 	EstudianteDAO estudianteDao;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>lista de Materias</title>
+</head>
+<body>
+	
+	<h2>Catalogo de Materias</h2> 
+	
+	<table>
+		<thead>
+			<th>Codigo</th>
+			<th>Materia</th>
+			<th>Opcion</th> 
+		</thead>
+		
+		<th:block th:each="materia, row:${materia}"> 
+			<tr>
+				<th th:text="${materia.id_materia}"/>
+				<th th:text="${materia.nombre_materia}"/>
+				<th>
+					<form method="post" th:action="@{/actualizarMateria2}">
+					<input type="hidden" name="id_materia" th:value=${materia.id_materia} >
+						<input type="submit" value="Editar">
+					</form>
+				</th>
+			</tr>
+		</th:block> 
+	</table> 
+	
+	<br>
+	
+	<form th:action="@{/AgregarMateria}" method="post">
+		<input type="submit" value="Agregar nueva Materia">
+	</form>
+
+</body>
+</html>

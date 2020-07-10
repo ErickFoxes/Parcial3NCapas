@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>listado de usuarios</title>
+</head>
+<body>
+
+	<h2>Catalogo de Usuarios</h2>
+	
+	
+		<table>
+		<thead>
+			<th>id</th>
+			<th>Nombre de usuario</th>
+			<th>Nombre</th> 
+			<th>Apellido</th> 
+			<th>Edad</th> 
+			<th>Fecha de nacimiento</th> 
+			<th>Rol</th> 
+			<th>Residencia</th> 
+		</thead>
+		
+		<th:block th:each="usuario, row:${usuario}"> 
+			<tr>
+				
+				<th th:text="${usuario.id_usuario}"/>
+				<th th:text="${usuario.nombre_usuario}"/>
+				<th th:text="${usuario.nombre}"/>
+				<th th:text="${usuario.apellido}"/>
+				<th th:text="${usuario.edad}"/>
+				<th th:text="${usuario.fecha_nac}"/>
+				<th th:text="${escuela.id_rol}"/>
+				<th th:text="${usuario.id_departamento}"/>
+				<th th:text="${usuario.id_municipio}"/>
+				<th th:text="${usuario.direccion_residencia}"/>
+				<th>
+					<form method="post" th:action="@{/actualizarUsuario2}">
+					<input type="hidden" name="id_usuario" th:value=${usuario.id_usuario} >
+						<input type="submit" value="Editar">
+					</form>
+				</th>
+				
+			</tr>
+		</th:block> 
+	</table> 
+	
+	<br>
+	
+	<form th:action="@{/AgregarUsuario}" method="post">
+		<input type="submit" value="Agregar nuevo Usuario">
+	</form>
+	
+</body>
+</html>

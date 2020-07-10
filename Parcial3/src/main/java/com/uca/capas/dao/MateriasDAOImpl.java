@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.uca.capas.domain.Materias;
 
 @Repository
-public class MateriaDAOImpl implements MateriaDAO{
+public class MateriasDAOImpl implements MateriasDAO{
 	
 	@PersistenceContext(unitName="capas")
 	private EntityManager entityManager;
