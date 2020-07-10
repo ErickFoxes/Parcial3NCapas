@@ -56,7 +56,7 @@ public class MateriasCursadasController {
 			mav.setViewName("InsertarNotas");
 		} else {
 			notasService.save(notas);
-			mav.setViewName("InsertarNotas");
+			mav.setViewName("buscarAlumno");
 		}
 		return mav;
 	}
@@ -94,12 +94,27 @@ public class MateriasCursadasController {
 				mav.setViewName("mostrarNotas");
 			} else {
 				notasService.save(notas);
-				mav.setViewName("mostrarNotas");
+				mav.setViewName("buscarAlumno");
 			}
 
 			return mav;
 		}
 
+		@RequestMapping("/mostrarnota")
+		public ModelAndView mostrarnota(@RequestParam(value = "id_estudiante") int nota) {
+			ModelAndView mav = new ModelAndView();
+			List<Notas> notas = null;
+			Estudiante est = estudianteService.findOne(nota);
+			try {
+				notas = notasService.filtrarPorId(est);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			mav.addObject("notas", notas);
+			mav.setViewName("mostrarNotas");
+			return mav;
+		}	
+		
 	// mostrar notas
 	@RequestMapping(value = "/mostrarNotas")
 	public ModelAndView findAll() {

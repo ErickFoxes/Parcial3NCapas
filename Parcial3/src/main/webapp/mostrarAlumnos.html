@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registro de estudiantes</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<th>Acción</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Materias Aprobadas</th>
+			<th>Materias Reprobadas</th>
+			<th>Promedio</th>
+		</thead>
+		<th:block th:each="est, row:${estudiante}">
+			<tr>
+				<th>
+					<form method="post" >
+						
+						<input type="submit" value="est">
+					</form>
+					<form method="post">
+						
+						<input type="submit" value="mat">
+					</form>
+				</th>
+				<th th:text="${est.nombre1}">
+				<th th:text="${est.apellido1}">
+				<th>apro</th>
+				<th>repro<th>
+				<th>promedio<th>
+			</tr>
+		</th:block>
+	</table>
+</body>
+</html>

@@ -5,32 +5,31 @@
 <title>Notas</title>
 </head>
 <body>
-	
-		<table>
-			<thead>
-				<th>Acción</th>
-				<th>Materia</th>
-				<th>Año</th>
-				<th>Ciclo</th>
-				<th>Nota</th>
-				<th>Resultado</th>
-			</thead>
-			<th:block th:each="notas, row:${notas}">
-				<tr>
-					<th>
-						<form method="post" th:action="@{/modificarNotas}">
-							<input type="hidden" name="id_estudiante" th:value=${notas.id_estudiante} >
-							<input type="submit" value="Editar materia">
-						</form>
-					</th>
-					<th th:text="${notas.materia.nombre_materia}">
-					<th th:text="${notas.anno}">
-					<th th:text="${notas.ciclo}">
-					<th th:text="${notas.nota}">
-					<th th:text="${notas.notaDelegate}">
-				</tr>
-			</th:block>
-		</table>
+	<table>
+		<thead>
+			<th>Acción</th>
+			<th>Materia</th>
+			<th>Año</th>
+			<th>Ciclo</th>
+			<th>Nota</th>
+			<th>Resultado</th>
+		</thead>
+		<th:block th:each="notas, row:${notas}">
+			<tr>
+				<th>
+					<form method="post" th:action="@{/modificarNotas}">
+						<input type="hidden" name="id_estudiante" th:value=${notas.id_estudiante} >
+						<input type="submit" value="Editar materia">
+					</form>
+				</th>
+				<th th:text="${notas.materia.nombre_materia}">
+				<th th:text="${notas.anno}">
+				<th th:text="${notas.ciclo}">
+				<th th:text="${notas.nota}">
+				<th th:text="${notas.notaDelegate}">
+			</tr>
+		</th:block>
+	</table>
 	
 </body>
 </html>

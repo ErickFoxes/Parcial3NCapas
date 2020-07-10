@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Buscar estudiante</title>
+</head>
+<body>
+	<form method="post" th:action="@{/buscarEstudiante}" >
+		<h1>Expedientes de Alumnos - Pantalla principal</h1>
+		<label>Buscar Alumno por: </label><br>
+		<select name="buscarPor">
+		  <option>Seleccione criterio [Nombre, Apellido]</option> 
+		  <option value="Nombre">Nombre</option>
+		  <option value="Apellido">Apellido</option>
+		</select>
+		
+		<label>Valor de busqueda: </label><br>
+		<input type="text" name="dato">
+		<br>
+		
+		<input type="submit" value="Buscar" >
+	</form>
+	<form method="post" th:action="@{/ingresarnota}" >
+		<input type="submit" value="Agregar Nueva Materia" >
+	</form>
+</body>
+</html>

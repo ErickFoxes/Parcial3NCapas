@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+			<thead>
+				<th>Acción</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Materias aprobadas</th>
+				<th>Materias Reprobadas</th>
+				<th>Promedio</th>
+			</thead>
+			<th:block th:each="notas, row:${notas}">
+				<tr>
+					<th>
+						<form method="post" th:action="@{/modificarNotas}">
+							<input type="hidden" name="id_estudiante" th:value=${notas.id_estudiante} >
+							<input type="submit" value="Editar materia">
+						</form>
+					</th>
+					<th th:text="${notas.materia.nombre_materia}">
+					<th th:text="${notas.anno}">
+					<th th:text="${notas.ciclo}">
+					<th th:text="${notas.nota}">
+					<th th:text="${notas.notaDelegate}">
+				</tr>
+			</th:block>
+		</table>
+</body>
+</html>

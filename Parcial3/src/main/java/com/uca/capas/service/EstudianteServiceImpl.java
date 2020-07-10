@@ -30,5 +30,16 @@ public class EstudianteServiceImpl implements EstudianteService{
 		return estudianteRepo.getOne(code);
 	}
 
+	@Override
+	public List<Estudiante> filtrarPorNombre(String nombre) throws DataAccessException {
+		return estudianteRepo.findByNombre1(nombre);
+		
+	}
+	
+	@Override
+	public List<Estudiante> filtrarPorApellido(String nombre) throws DataAccessException {
+		return estudianteRepo.findByApellido1(nombre);
+		
+	}
 
 }
