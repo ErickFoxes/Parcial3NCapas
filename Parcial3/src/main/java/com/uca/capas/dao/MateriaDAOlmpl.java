@@ -6,9 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.uca.capas.domain.Escuela;
 import com.uca.capas.domain.Materia;
@@ -20,7 +22,8 @@ public class MateriaDAOlmpl implements MateriaDAO {
 	@PersistenceContext(unitName="capas")
 	private EntityManager entityManager;
 	
-	JdbcTemplate jdbcTemplate;
+	@Autowired
+	JdbcTemplate jdbcTemplate; 
 	
 	public static final String sql = "UPDATE public.TB_MATERIA SET nombre_materia = ? WEHRE id_materia = ?";
 
@@ -43,11 +46,12 @@ public class MateriaDAOlmpl implements MateriaDAO {
 	}
 
 	@Override
+	@Transactional 
 	public void saveMateria(Materia materia) throws DataAccessException {
 		// TODO Auto-generated method stub
 		try {
-			if(materia.getId_materia() == null) {
-				entityManager.persist(materia);
+			if(materia.getId_materia() == null) { 
+				entityManager.persist(materia); 
 			}
 			else {
 				entityManager.merge(materia);

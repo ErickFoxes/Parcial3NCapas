@@ -34,10 +34,11 @@ public class MainController {
 	
 	//inicio
 	@RequestMapping ("/")
-	public ModelAndView inicio(Materia materia) {
+	public ModelAndView inicio() { 
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("materia", materia);
-		mav.setViewName("Materias");
+		List<Materia> materiasSelect = materiaService.findAllSubjects();
+		mav.addObject("materia", materiasSelect );
+		mav.setViewName("Materias"); 
 		return mav;
 	}
 
@@ -178,13 +179,13 @@ public class MainController {
 			materiaService.saveMateria(materia);
 			List<Materia> materias = null;
 			try {
-				materias = materiaService.findAllSubjects();
+				materias = materiaService.findAllSubjects(); 
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
 			mav.addObject("materia", materia);
-			mav.setViewName("Materias");
+			mav.setViewName("Materias"); 
 		}
 		
 		return mav;

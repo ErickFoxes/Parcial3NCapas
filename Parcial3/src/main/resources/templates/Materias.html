@@ -6,22 +6,22 @@
 </head>
 <body>
 	
-	<h2>Catalogo de Materias</h2>
+	<h2>Catalogo de Materias</h2> 
 	
 	<table>
 		<thead>
 			<th>Codigo</th>
 			<th>Materia</th>
-			<th>Opcion</th>
+			<th>Opcion</th> 
 		</thead>
 		
-		<th:block th:each="materia, row:${materias}">
+		<th:block th:each="materia, row:${materia}"> 
 			<tr>
 				<th th:text="${materia.id_materia}"/>
 				<th th:text="${materia.nombre_materia}"/>
 			</tr>
-		</th:block>
-	</table>
+		</th:block> 
+	</table> 
 	
 	<br>
 	

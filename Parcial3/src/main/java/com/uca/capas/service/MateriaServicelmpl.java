@@ -9,30 +9,34 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.uca.capas.dao.MateriaDAO;
 import com.uca.capas.domain.Materia;
+import com.uca.capas.repositories.MateriaRepo;
 
 @Service
 public class MateriaServicelmpl implements MateriaService{
 	
 	@Autowired
-	MateriaDAO materiaDAO;
+	MateriaDAO materiaDAO; 
+	
+	@Autowired
+	MateriaRepo materiaRepo;
 
 	@Override
 	public List<Materia> findAllSubjects() throws DataAccessException {
 		// TODO Auto-generated method stub
-		return materiaDAO.findAllSubjects();
+		return materiaRepo.findAll(); 
 	}
 
 	@Override
-	public Materia findSubject(Integer code) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return materiaDAO.findSubject(code);
+	public Materia findSubject(Integer code) throws DataAccessException { 
+		// TODO Auto-generated method stub 
+		return materiaRepo.getOne(code); 
 	}
 
 	@Override
 	@Transactional
 	public void saveMateria(Materia materia) throws DataAccessException {
 		// TODO Auto-generated method stub
-		materiaDAO.saveMateria(materia);
+		materiaRepo.save(materia);
 	}
 
 	@Override
