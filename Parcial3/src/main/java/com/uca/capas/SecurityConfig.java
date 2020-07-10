@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.uca.capas.services.UsuarioService;
+import com.uca.capas.services.UserService;
 
 
 
@@ -18,7 +18,7 @@ import com.uca.capas.services.UsuarioService;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UsuarioService userDetailsService;
+	private UserService userDetailsService;
 	
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;

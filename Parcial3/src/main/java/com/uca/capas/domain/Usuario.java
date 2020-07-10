@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -26,23 +27,18 @@ public class Usuario {
 	@Id
 	@Column(name="id_usuario")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_usuario;
+	private Integer id_usuario;
 	
-	@Size(message="Este campo no debe tener mas de 1 caracter", max=1)
-	@Max(1)
-	@Min(0)
-	@NotEmpty(message="El campo rol no puede estar vacío")
-	@Column(name="rol")
-	private int rol;
+	
 	
 	@Size(message="Este campo no debe tener mas de 20 caracteres", max=20)
 	@NotEmpty(message="El campo nombre de usuario no puede estar vacío")
-	@Column(name="nombre_usario")
+	@Column(name="username")
 	private String username;
 	
 	@Size(message="Este campo no debe tener mas de 25 caracteres", max=25)
 	@NotEmpty(message="El campo contraseña no puede estar vacío")
-	@Column(name="contrasenna")
+	@Column(name="pass")
 	private String pass;
 	
 	@Size(message="Este campo no debe tener mas de 20 caracteres", max=20)
@@ -79,8 +75,15 @@ public class Usuario {
 	@Column(name="direccion_residencia")
 	private String direccion_residencia;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_rol")
+	private Rol rol;
+	
 	@Column(name="estado")
 	private Boolean estado;
+	
+	@Transient
+	private Integer rol_id;
 	
 	//FUNCION
 	public String getEstadoDelegate() {
@@ -93,7 +96,7 @@ public class Usuario {
 	
 	//GETTERS Y SETTERS
 
-	public int getId_usuario() {
+	public Integer getId_usuario() {
 		return id_usuario;
 	}
 
@@ -101,13 +104,7 @@ public class Usuario {
 		this.id_usuario = id_usuario;
 	}
 
-	public int getRol() {
-		return rol;
-	}
 
-	public void setRol(int rol) {
-		this.rol = rol;
-	}
 
 
 
@@ -204,5 +201,35 @@ public class Usuario {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+
+
+	
+
+	public Rol getRol() {
+		return rol;
+	}
+
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+
+
+	public Integer getRol_id() {
+		return rol_id;
+	}
+
+
+	public void setRol_id(Integer rol_id) {
+		this.rol_id = rol_id;
+	}
+
+
+	public void setId_usuario(Integer id_usuario) {
+		this.id_usuario = id_usuario;
+	}
+	
+	
+	
 	
 }

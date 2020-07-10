@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"><head>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Nuevo usuario</title>
 </head>
 <body>
-Este es el formulario
+<h1>Ingrese sus datos por favor</h1>
+
+<form th:action="@{/saveUsuario}" th:object="${usuario}" method="post">
+	 <input type="hidden" name="id_usuario" class="form-control" th:field="*{id_usuario}" /> 
+	
+		 <label> Username: </label>
+		<input th:field="*{username}" type="text"><br>
+		<!-- <span th:errors="*{s_categoria}" style="color:#E81505"></span><br>  -->
+		<label> Password: </label>
+		<input th:field="*{pass}" type="password"><br>
+		
+		<label> Nombre: </label>
+		<input th:field="*{nombre}" type="text"><br>
+		
+		<label> Apellido: </label>
+		<input th:field="*{apellido}" type="text"><br>
+		
+		<label> Edad: </label>
+		<input th:field="*{edad}" type="number"><br>
+		
+		<label> Fecha de nacimiento: </label>
+		<input th:field="*{fecha_nac}" type="date"><br>
+		
+		<label> Direccion de residencia: </label>
+		<input th:field="*{direccion_residencia}" type="text"><br>
+		
+	<!-- 	<label>Activo</label>
+		<input type="radio" th:field ="*{estado}" th:value="${true}">
+		<label>Inactivo</label>
+		<input type="radio" th:field ="*{estado}" th:value="${false}"><br> -->
+		
+		<input type="submit" value="Guardar categoria">
 </body>
 </html>

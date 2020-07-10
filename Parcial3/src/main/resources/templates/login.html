@@ -4,11 +4,29 @@
 <title>Login</title>
 </head>
 <body>
+<h1> Bienvenido! ingrese sus credenciales para ingresar</h1>
+	<form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+         <table>
+            <tr>
+               <td>User:</td>
+               <td><input type='text' name='username' value=''></td>
+            </tr>
+            <tr>
+               <td>Password:</td>
+               <td><input type='password' name='password' /></td>
+            </tr>
+                       
+            <tr>
+               <td><input name="submit" type="submit" value="submit" /></td>
+            </tr>
+         </table>
+      </form>
+
 <form th:action="@{/formLogin}" method="GET">
         <input type="submit" value="Signup">
     </form><br>
     
-    <a href="formLogin">Formulario</a>
+    
 
 </body>
 </html>
