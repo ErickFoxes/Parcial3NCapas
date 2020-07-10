@@ -278,12 +278,12 @@ public class MainController {
 		
 		//--Actualizar--
 			@RequestMapping ("/actualizarEscuela2")
-			public ModelAndView updateE2(@RequestParam(value = "id_materia") int materia) {
+			public ModelAndView updateE2(@RequestParam(value = "id_materia") int escu) {
 				ModelAndView mav = new ModelAndView();
 				Escuela escuela = null;
-				escuela = escuelaService.findOneSchool(materia);
-				mav.addObject("materia", escuela);
-				mav.setViewName("ActualizarMateria");
+				escuela = escuelaService.findOneSchool(escu);
+				mav.addObject("escuela", escuela);
+				mav.setViewName("ActualizarEscuela");
 				return mav;
 			}
 		
