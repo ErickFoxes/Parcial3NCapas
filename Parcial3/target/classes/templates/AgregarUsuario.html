@@ -9,67 +9,67 @@
 	<h1>AGREGAR UN NUEVO USUARIO</h1>
 	
 	<form th:action="@{/guardarUsuario}" th:object="${usuario}" method="POST">
-	
+
 		<div>
 			<label for="id_user"><font color="#000000" face ="Arial" >Id user: </font>  </label>
-			<input type="text" th:field="${usuario.id_usuario}" id="id_user" required >
-			<span th:errors ="${usuario.id_usuario}" style="color:#FF0000"></span>
+			<input type="text" th:field="*{id_usuario}" id="id_user" required >
+			<span th:errors ="*{id_usuario}" style="color:#FF0000"></span>
 		</div>
 		
 		<div>
 			<label for="name_user"><font color="#000000" face ="Arial" >Nombre usuario: </font>  </label>
-			<input type="text" th:field="${usuario.username}" id="name_user" required >
-			<span th:errors ="${usuario.username}" style="color:#FF0000"></span>
+			<input type="text" th:field="*{username}" id="name_user" required >
+			<span th:errors ="*{username}" style="color:#FF0000"></span>
 		</div>
 	
 		<div>
 			<label for="Password"><font color="#000000" face ="Arial" >Password: </font>  </label>
-			<input type="text" th:field="${usuario.pass}" id="Password" required >
-			<span th:errors ="${usuario.pass}" style="color:#FF0000"></span>
+			<input type="text" th:field="*{pass}" id="Password" required >
+			<span th:errors ="*{pass}" style="color:#FF0000"></span>
 		</div>
 		
 		<div>
 			<label for="name"><font color="#000000" face ="Arial" >Nombre: </font>  </label>
-			<input type="text" th:field="${usuario.nombre}" id="name" required >
-			<span th:errors ="${usuario.nombre}" style="color:#FF0000"></span>
+			<input type="text" th:field="*{nombre}" id="name" required >
+			<span th:errors ="*{nombre}" style="color:#FF0000"></span>
 		</div>
 		<div>
 			<label for="lastname"><font color="#000000" face ="Arial" >Apellido: </font>  </label>
-			<input type="text" th:field="${usuario.apellido}" id="lastname" required >
-			<span th:errors ="${usuario.apellido}" style="color:#FF0000"></span>
+			<input type="text" th:field="*{apellido}" id="lastname" required >
+			<span th:errors ="*{apellido}" style="color:#FF0000"></span>
 		</div>
 		<div>
 			<label for="age"><font color="#000000" face ="Arial" >Edad: </font>  </label>
-			<input type="text" th:field="${usuario.edad}" id="age" required >
-			<span th:errors ="${usuario.edad}" style="color:#FF0000"></span>
+			<input type="text" th:field="*{edad}" id="age" required >
+			<span th:errors ="*{edad}" style="color:#FF0000"></span>
 		</div>
 		
 		<div>
 			<label for="date"><font color="#000000" face ="Arial" >fecha nacimiento: </font>  </label>
-			<input type="date" th:field="${usuario.fecha_nac}" id="date" required >
-			<span th:errors ="${usuario.fecha_nac}" style="color:#FF0000"></span>
+			<input type="date" th:field="{fecha_nac}" id="date" required >
+			<span th:errors ="{fecha_nac}" style="color:#FF0000"></span>
 		</div>
 		<div>
 			<label for="dep"><font color="#000000" face ="Arial" >Departamento: </font>  </label>
-			<input type="text" th:field="${usuario.id_departamento}" id="dep" required >
-			<span th:errors ="${usuario.id_departamento}" style="color:#FF0000"></span>
+			<input type="text" th:field="*{id_departamento}" id="dep" required >
+			<span th:errors ="*{id_departamento}" style="color:#FF0000"></span>
 		</div>
 		<div>
 			<label for="muni"><font color="#000000" face ="Arial" >Municipio: </font>  </label>
-			<input type="text" th:field="${usuario.id_municipio}" id="muni" required >
-			<span th:errors ="${usuario.id_municipio}" style="color:#FF0000"></span>
+			<input type="text" th:field="*{id_municipio}" id="muni" required >
+			<span th:errors ="*{id_municipio}" style="color:#FF0000"></span>
 		</div>
 		<div>
 			<label for="address"><font color="#000000" face ="Arial" >Direccion: </font>  </label>
-			<input type="text" th:field="${usuario.direccion_residencia}" id="address" required >
-			<span th:errors ="${usuario.direccion_residencia}" style="color:#FF0000"></span>
+			<input type="text" th:field="*{direccion_residencia}" id="address" required >
+			<span th:errors ="*{direccion_residencia}" style="color:#FF0000"></span>
 		</div>
 			
 		<div>
 			<label>Activo</label>
-			<input type="radio" th:field="${usuario.estado}" th:value="${true}">
+			<input type="radio" th:field="*{estado}" th:value="${true}">
 			<label>Inactivo</label>
-			<input type="radio" th:field="${usuario.estado}" th:value="${false}">
+			<input type="radio" th:field="*{estado}" th:value="${false}">
 		</div>
 		
 		<input type="submit" value="Guardar"> 

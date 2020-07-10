@@ -8,22 +8,41 @@
 
 	<h1>AGREGAR UN NUEVO CENTRO ESCOLAR</h1>
 	
-	<form th:action="@{/guardarCentroEscolar}" th:object="${Escuelas}" method="POST">
-	
-		<label >id Centro Escolar</label><br/>
-		<input type="number" placeholder="id" th:field="${Escuelas.id_centro_escolar}"/><br/>
+	<form th:action="@{/guardarEscuela}" th:object="${escuela}" method="post">
+		<div>
+			<label for="id_centro_escolar"><font color="#000000" face ="Arial" >id Escuela: </font>  </label>
+			<input type="text" th:field="*{id_centro_escolar}" id="id_centro_escolar" required >
+			<span th:errors ="*{id_centro_escolar}" style="color:#FF0000"></span>
+		</div>
 		
-		<label >Nombre de Centro Escolar</label><br/>
-		<input type="text" placeholder="centro escolar" th:field="${Escuelas.nombre_centro_escolar}"/><br/>
+		<br>
 		
-		<label >Departamento</label><br/>
-		<input type="text" placeholder="departamento" th:field="${Escuelas.id_departamento}"/><br/>
+		<div>
+			<label for="nombre_centro_escolar"> <font color="#000000" face ="Arial">Nombre: </font>  </label>
+			<input type="text" th:field="*{nombre_centro_escolar}" id="nombre_centro_escolar" required >
+			<span th:errors ="*{nombre_centro_escolar}" style="color:#FF0000"></span>
+		</div>
 		
-		<label >Municipio</label><br/>
-		<input type="text" placeholder="municipio" th:field="${Escuelas.id_municipio}"/><br/>
+		<br>
+		
+		<div>
+			<label for="id_departamento"> <font color="#000000" face ="Arial">Departamento: </font>  </label>
+			<input type="text" th:field="*{id_departamento}" id="id_departamento" required >
+			<span th:errors ="*{id_departamento}" style="color:#FF0000"></span>
+		</div>
+		
+		<br>
+				
+		<div>
+			<label for="id_municipio"> <font color="#000000" face ="Arial">Municipio:</font>  </label>
+			<input type="text" th:field="*{id_municipio}" id="id_municipio" required >
+			<span th:errors ="*{id_municipio}" style="color:#FF0000"></span>
+		</div>
 		
 		<input type="submit" value="Guardar">  
+		
 	</form>
+	
 
 </body>
 </html>

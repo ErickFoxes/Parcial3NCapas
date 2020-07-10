@@ -9,30 +9,35 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.uca.capas.dao.CentroEscolarDAO;
 import com.uca.capas.domain.Escuela;
+import com.uca.capas.repositories.EscuelaRepo;
+import com.uca.capas.repositories.UsuarioRepo;
 
 @Service
 public class CentroEscolarServicelmpl implements CentroEscolarService{
 	
 	@Autowired
 	CentroEscolarDAO centroEscolarDAO;
+	
+	@Autowired
+	EscuelaRepo escuelaRepo;
 
 	@Override
 	public List<Escuela> findAllSchools() throws DataAccessException {
 		// TODO Auto-generated method stub
-		return centroEscolarDAO.findAllSchools();
+		return escuelaRepo.findAll();
 	}
 
 	@Override
 	public Escuela findOneSchool(Integer code) throws DataAccessException {
 		// TODO Auto-generated method stub
-		return centroEscolarDAO.findOneSchool(code);
+		return escuelaRepo.getOne(code);
 	}
 
 	@Override
 	@Transactional
 	public void saveEscuela(Escuela escuela) throws DataAccessException {
 		// TODO Auto-generated method stub
-		centroEscolarDAO.saveEscuela(escuela);
+		escuelaRepo.save(escuela);
 	}
 
 	@Override
