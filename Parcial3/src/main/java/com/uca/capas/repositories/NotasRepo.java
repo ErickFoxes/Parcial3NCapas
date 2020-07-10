@@ -16,4 +16,5 @@ public interface NotasRepo extends JpaRepository<Notas, Integer>{
 	public List<Notas> findByNotaLessThan(int estudiante) throws DataAccessException;
 	@Query("select c from Notas c where c.nota >= 6 and c.expediente.id_estudiante = ?1")
 	public List<Notas> findByNotaGreaterThanEqual(int estudiante) throws DataAccessException;
+	public List<Notas> findByExpediente(int estudiante) throws DataAccessException;
 }

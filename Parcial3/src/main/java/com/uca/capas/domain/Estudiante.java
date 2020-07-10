@@ -111,7 +111,18 @@ public class Estudiante {
 	@Transient
 	private Integer aprobados;
 	
+	@Transient
+	private Double promedio; 
 	
+	
+	public Double getPromedio() {
+		return promedio;
+	}
+
+	public void setPromedio(Double promedio) {
+		this.promedio = promedio;
+	}
+
 	public Integer getAprobados() {
 		return aprobados;
 	}

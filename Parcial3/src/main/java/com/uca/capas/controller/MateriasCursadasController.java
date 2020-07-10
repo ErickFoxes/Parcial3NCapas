@@ -111,6 +111,7 @@ public class MateriasCursadasController {
 				e.printStackTrace();
 			}
 			mav.addObject("notas", notas);
+			mav.addObject("est", est);
 			mav.setViewName("mostrarNotas");
 			return mav;
 		}	

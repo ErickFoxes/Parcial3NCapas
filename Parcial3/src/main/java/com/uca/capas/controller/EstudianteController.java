@@ -46,9 +46,10 @@ public class EstudianteController {
 		catch (Exception e){
 			e.printStackTrace();
 		}
-
+		
 		
 		estudiante.forEach((e) -> {
+			e.setPromedio(0.0);
 			List<Notas> nota = null;
 			nota=notasService.filtrarPorReprobados(e.getId_estudiante());
 			e.setReprobados(nota.size());
@@ -56,7 +57,15 @@ public class EstudianteController {
 			nota=notasService.filtrarPorAprobados(e.getId_estudiante());
 			e.setAprobados(nota.size());
 			
-		}	); 
+			List<Notas> nota2 = null;
+			nota2=notasService.filtrarPorId(e);
+
+			nota2.forEach((n) -> {
+					e.setPromedio((e.getPromedio()+n.getNota()));
+				
+			}); 
+			e.setPromedio(e.getPromedio()/nota2.size());
+		}); 
 		mav.addObject("estudiante",estudiante);
 		mav.setViewName("mostrarAlumnos");
 		return mav;
