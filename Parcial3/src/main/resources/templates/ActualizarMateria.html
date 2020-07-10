@@ -2,10 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>actualizar Materia </title>
+<title>Actualizar Materia </title>
 </head>
 <body>
-
+	<h1>ACTUALIZAR UNA MATERIA</h1>
+	
+	<form th:action="@{/actualizarMateria}" th:object="${materias}" method="POST">
+		<div style="border: 1px solid black; padding:20px;">
+		
+		<label th:text="Nombre de Materia"></label><br/>
+		<input type="text" placeholder="materia" th:field="${materias.nombre_materia}"/><br/>
+		
+		<input type="submit" value="Guardar">  
+	</form>
 
 </body>
 </html>

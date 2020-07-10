@@ -25,7 +25,11 @@ public class MainController {
 	
 	@Autowired
 	private CentroEscolarService centroEscolarService;
+	
+	@Autowired
 	private MateriaService materiaService;
+	
+	@Autowired
 	private UsuarioService usuarioService;
 	
 	//inicio
@@ -39,7 +43,7 @@ public class MainController {
 	//*** USUARIO ***
 	
 	//--Mostar uno--
-	@RequestMapping (value = "/mostrarUnaUsuario", method = RequestMethod.POST)
+	@RequestMapping (value = "/mostrarUnUsuario", method = RequestMethod.POST)
 	public ModelAndView findOneUsuario(@RequestParam (value = "codigo") Integer id) {
 		ModelAndView mav = new ModelAndView();
 		Usuario usuario = usuarioService.findOneUser(id);
@@ -50,7 +54,7 @@ public class MainController {
 	}
 
 	//--Guardar nuevo--
-	@RequestMapping ("/guardarUsuarios")
+	@RequestMapping ("/guardarUsuario")
 	public ModelAndView guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		

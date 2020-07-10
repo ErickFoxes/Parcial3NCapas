@@ -21,7 +21,7 @@ public class MateriaDAOlmpl implements MateriaDAO {
 	
 	JdbcTemplate jdbcTemplate;
 	
-	public static final String sql = "UPDATE store.TB_MATERIA SET nombre = ? WEHRE id_materia = ?";
+	public static final String sql = "UPDATE store.TB_MATERIA SET nombre_materia = ? WEHRE id_materia = ?";
 
 	@Override
 	public List<Materias> findAllSubjects() throws DataAccessException {
@@ -54,7 +54,8 @@ public class MateriaDAOlmpl implements MateriaDAO {
 	@Override
 	public void updateUsuario(Materias materia) throws DataAccessException {
 		// TODO Auto-generated method stub
-		
+		Object[] parametros = new Object [] {materia.getId_materia(), materia.getNombre_materia()};
+		jdbcTemplate.update(sql,parametros);
 	}
 
 
