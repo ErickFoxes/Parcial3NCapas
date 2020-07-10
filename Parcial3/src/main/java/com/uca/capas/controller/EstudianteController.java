@@ -1,5 +1,9 @@
 package com.uca.capas.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.domain.Departamentos;
@@ -51,10 +56,25 @@ public class EstudianteController {
 	public ModelAndView nuevoEstudiante() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("estudiante", new Estudiante());
+		
+		List <Departamentos> departamentos = null;
+		List <Municipios> municipios = null;
+		List <Escuelas> escuelas = null;
+		try{
+			departamentos = departamentoService.findAll();
+			municipios = municipioService.findAll();
+			escuelas = escuelaService.findAll();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		mav.addObject("departamentos", departamentos);
+		mav.addObject("municipios", municipios);
+		mav.addObject("escuelas", escuelas);
+		
 		mav.setViewName("Estudiante/agregarEstudiante");
 		return mav;
 	}
-	
+			
 	@RequestMapping(value = "/saveExpediente" )
 	public ModelAndView saveExpediente(@Valid @ModelAttribute("estudiante") Estudiante estudiante, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
@@ -71,27 +91,45 @@ public class EstudianteController {
 				e.printStackTrace();
 			}
 			
-			/*
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
-			LocalDateTime fechaActual = LocalDateTime.now();
-			String fechaI = dtf.format(fechaActual);
-		    System.out.println(fechaI); 
-			
-			mav.addObject("f_ingreso", fechaI);
-			*/
-			
 			mav.addObject("estudiante", estudiante);
 			mav.addObject("departamentos", departamentos);
 			mav.addObject("municipios", municipios);
 			mav.addObject("escuelas", escuelas);
-			mav.setViewName("Estudiante/agregarEstudiante");
 			
+			mav.setViewName("Estudiante/agregarEstudiante");
 		}
 		
 		else {
 			estudianteService.save(estudiante);
 			mav.setViewName("Estudiante/indexEstudiante");
 		}
+		
+		return mav;
+		
+	}
+	
+	@RequestMapping(value = "/actualizarEstudiante", method = RequestMethod.POST)
+	public ModelAndView actualizar(@RequestParam(value = "codigo") int id) {
+		ModelAndView mav = new ModelAndView();
+		
+		List <Departamentos> departamentos = null;
+		List <Municipios> municipios = null;
+		List <Escuelas> escuelas = null;
+		try{
+			departamentos = departamentoService.findAll();
+			municipios = municipioService.findAll();
+			escuelas = escuelaService.findAll();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		mav.addObject("departamentos", departamentos);
+		mav.addObject("municipios", municipios);
+		mav.addObject("escuelas", escuelas);
+		
+		
+		Estudiante estudiante = estudianteService.findOne(id);
+		mav.addObject("estudiante", estudiante);
+		mav.setViewName("Estudiante/actualizarEstudiante");
 		
 		return mav;
 		

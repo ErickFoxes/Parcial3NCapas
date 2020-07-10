@@ -7,7 +7,7 @@
 
 <body>
 
-	<h1>Ingresar nuevo expedientes</h1>
+	<h1>Ingresar nuevo expediente</h1>
 	<form th:action = "@{/saveExpediente}" th:object = "${estudiante}" method = "post">
 	
 		<label>Primer nombre: </label>
@@ -34,28 +34,11 @@
 		<input th:field = "*{carnet}" type = "text"/>
 		<span th:errors = "*{carnet}" style = "color: #E81505"></span>
 		<br><br>
-
-		<!--
 		
 		<label>Fecha de nacimiento: </label>
 		<input th:field = "*{fecha_nac}" type = "text"/>
 		<span th:errors = "*{fecha_nac}" style = "color: #E81505"></span>
 		<br><br>
-		
-
-		<label>Fecha de Nacimiento:</label> <br>
-        <input type="text" id="fecha_nac" th:field="*{fecha_nac}" >
-	       	<script type="text/javascript">
-		        $(function () {
-		            $('#fnacimiento').datepicker({
-		            	format: 'dd/mm/yyyy'
-		            });
-		        });
-		    </script>
-
-		<br><br>
-		
-		-->
 		
 		<label>Direccion de vivienda: </label>
 		<input th:field = "*{direccion_vivienda}" type = "text"/>
@@ -110,8 +93,19 @@
 		<br><br>
 	
 		<input type = "submit" value = "Guardar">
+		
+		<br><br>
+		
+		<input type = "reset" value = "Limpiar">
 	
 	</form>
+	
+	<br>
+	
+	<form th:action="@{/indexExpediente}">
+    	<input type="submit" value="Regresar">
+	</form>
+
 
 </body>
 </html>

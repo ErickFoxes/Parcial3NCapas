@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -58,11 +59,14 @@ public class Estudiante {
 	@Column(name="carnet")
 	private String carnet;
 	
-	//@NotEmpty(message="El campo fecha de nacimiento no puede estar vacío")
 	//@NotNull(message = "El campo fecha de nacimiento no puede quedar vacio")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotEmpty(message="El campo fecha de nacimiento no puede estar vacío")
 	@Column(name="fecha_nac")
 	private Date fecha_nac;
+	
+	@Column(name="edad")
+	private Integer edad;
 	
 	@Size(message="Este campo no debe tener mas de 100 caracteres", max=100)
 	@NotEmpty(message="El campo dirección de vivienda no puede estar vacío")
@@ -86,12 +90,12 @@ public class Estudiante {
 	private Escuelas escuela;
 	
 	@Size(message="Este campo no debe tener mas de 50 caracteres", max=50)
-	@NotEmpty(message="El campo nombres del padre no puede estar vacío")
+	@NotEmpty(message="El campo nombre del padre no puede estar vacío")
 	@Column(name="nombre_padre")
 	private String nombre_padre;
 	
 	@Size(message="Este campo no debe tener mas de 50 caracteres", max=50)
-	@NotEmpty(message="El campo nombres de las madre no puede estar vacío")
+	@NotEmpty(message="El campo nombre de la madre no puede estar vacío")
 	@Column(name="nombre_madre")
 	private String nombre_madre;
 	
@@ -173,6 +177,14 @@ public class Estudiante {
 		return fecha_nac;
 	}
 
+	public Integer getEdad() {
+		return edad;
+	}
+
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
+
 	public void setFecha_nac(Date fecha_nac) {
 		this.fecha_nac = fecha_nac;
 	}
@@ -242,6 +254,7 @@ public class Estudiante {
 	}
 	
 	//delegate para convertir fecha
+	/*
 	public String getFechaDelegate(){
 		if(this.fecha_nac == null){
 			return "";
@@ -252,6 +265,7 @@ public class Estudiante {
 			return shortdate;
 		}
 	}
+	*/
 	
 	public String getEdadDelegate() {
 		Calendar cal = Calendar.getInstance();

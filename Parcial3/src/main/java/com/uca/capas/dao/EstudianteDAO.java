@@ -15,5 +15,7 @@ public interface EstudianteDAO {
 	public void save(Estudiante estudiante) throws DataAccessException;
 	
 	public void updateEstudiante(Estudiante estudiante);
+	
+	public int insertEstudianteAutoId(Estudiante c);
 
 }

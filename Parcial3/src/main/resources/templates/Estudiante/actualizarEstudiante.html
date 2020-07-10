@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Actualizar Expediente</title>
+</head>
+
+<body>
+
+	<h1>Actualizar expediente</h1>
+	<form th:action = "@{/saveExpediente}" th:object = "${estudiante}" method = "post">
+	
+		<label> Codigo del estudiante: </label>
+		<input type = "hidden" th:field = "*{id_estudiante}">
+		<br><br>
+	
+		<label>Primer nombre: </label>
+		<input th:field = "*{nombre1}" type = "text"/>
+		<span th:errors = "*{nombre1}" style = "color: #E81505"></span>
+		<br><br>
+		
+		<label>Segundo nombre: </label>
+		<input th:field = "*{nombre2}" type = "text"/>
+		<span th:errors = "*{nombre2}" style = "color: #E81505"></span>
+		<br><br>
+		
+		<label>Primer apellido: </label>
+		<input th:field = "*{apellido1}" type = "text"/>
+		<span th:errors = "*{apellido1}" style = "color: #E81505"></span>
+		<br><br>
+		
+		<label>Segundo apellido: </label>
+		<input th:field = "*{apellido2}" type = "text"/>
+		<span th:errors = "*{apellido2}" style = "color: #E81505"></span>
+		<br><br>
+		
+		<label>Carnet de minoridad: </label>
+		<input th:field = "*{carnet}" type = "text"/>
+		<span th:errors = "*{carnet}" style = "color: #E81505"></span>
+		<br><br>
+		
+		<label>Fecha de nacimiento: </label>
+		<input th:field = "*{fecha_nac}" type = "text"/>
+		<span th:errors = "*{fecha_nac}" style = "color: #E81505"></span>
+		<br><br>
+		
+		<label>Direccion de vivienda: </label>
+		<input th:field = "*{direccion_vivienda}" type = "text"/>
+		<span th:errors = "*{direccion_vivienda}" style = "color: #E81505"></span>
+		<br><br>
+		
+		<label>Telefono: </label>
+		<input th:field = "*{tel}" type = "text"/>
+		<span th:errors = "*{tel}" style = "color: #E81505"></span>
+		<br><br>
+		
+		<label>Celular: </label>
+		<input th:field = "*{cel}" type = "text"/>
+		<span th:errors = "*{cel}" style = "color: #E81505"></span>
+		<br><br>
+		
+		<label>Nombre padre: </label>
+		<input th:field = "*{nombre_padre}" type = "text"/>
+		<span th:errors = "*{nombre_padre}" style = "color: #E81505"></span>
+		<br><br>
+		
+		<label>Nombre madre: </label>
+		<input th:field = "*{nombre_madre}" type = "text"/>
+		<span th:errors = "*{nombre_madre}" style = "color: #E81505"></span>
+		<br><br>
+		
+		<label>Departamento: </label> <br>
+		<select th:field = "*{departamento.id_departamento}">
+			<option th:each = "departamento, row:${departamentos}" 
+			th:value = "${departamento.id_departamento}" th:text = "${departamento.nombre_departamento}">
+			</option>
+		</select>
+		
+		<br><br>
+		
+		<label>Municipio: </label> <br>
+		<select th:field = "*{municipio.id_municipio}">
+			<option th:each = "municipio, row:${municipios}" 
+			th:value = "${municipio.id_municipio}" th:text = "${municipio.nombre_municipio}">
+			</option>
+		</select>
+		
+		<br><br>
+	
+		<label>Centro escolar: </label> <br>
+		<select th:field = "*{escuela.id_centro_escolar}">
+			<option th:each = "escuela, row:${escuelas}" 
+			th:value = "${escuela.id_centro_escolar}" th:text = "${escuela.nombre_centro_escolar}">
+			</option>
+		</select>
+		
+		<br><br>
+	
+		<input type = "submit" value = "Guardar">
+		
+		<!--  
+		<br><br>
+			
+		<input type = "reset" value = "Limpiar">
+		-->
+	
+	</form>
+	
+	<br>
+	
+	<form th:action="@{/indexExpediente}">
+    	<input type="submit" value="Regresar">
+	</form>
+
+
+</body>
+</html>

@@ -1,5 +1,9 @@
 package com.uca.capas.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +37,24 @@ public class EstudianteServiceImpl implements EstudianteService {
 	@Override
 	@Transactional
 	public void save(Estudiante estudiante) throws DataAccessException {
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(estudiante.getFecha_nac());
+		LocalDate localFnacimiento = LocalDateTime.ofInstant(cal.toInstant(), cal.getTimeZone().toZoneId()).toLocalDate();
+	    Integer edad = Period.between(localFnacimiento, LocalDate.now()).getYears();
+		estudiante.setEdad(edad);;	
+		
 		estudianteRepo.save(estudiante);
 	}
 
 	@Override
 	public void updateEstudiante(Estudiante estudiante) {
 		estudianteDAO.updateEstudiante(estudiante);
+	}
+
+	@Override
+	public int insertEstudianteAutoId(Estudiante c) {
+		return estudianteDAO.insertEstudianteAutoId(c);
 	}
 
 }

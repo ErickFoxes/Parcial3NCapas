@@ -16,4 +16,6 @@ public interface EstudianteService {
 	
 	public void updateEstudiante(Estudiante estudiante);
 	
+	public int insertEstudianteAutoId(Estudiante c);
+	
 }

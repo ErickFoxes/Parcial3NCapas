@@ -12,13 +12,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(schema="public",name="TB_DEPARTAMENTOS")
+@Table(schema="public",name="TB_DEPARTAMENTO")
 public class Departamentos {
-	
 	/*
 	@OneToMany(mappedBy="id_departamento",fetch=FetchType.EAGER)
-	private List<Estudiante> estudiantes;
-	*/
+	private List<Estudiante> estudiantes;*/
 	
 	@OneToMany(mappedBy="id_departamento")
 	private List<Municipios> municipios;

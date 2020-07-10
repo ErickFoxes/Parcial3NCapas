@@ -1,6 +1,8 @@
 package com.uca.capas.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,6 +11,7 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -74,6 +77,38 @@ public class EstudianteDAOImpl implements EstudianteDAO {
 				estudiante.getEscuela(), estudiante.getNombre_padre(), estudiante.getNombre_madre(), estudiante.getDepartamento(), estudiante.getMunicipio() };
 		jdbcTemplate.update(sql, parametros);
 		
+	}
+
+	@Override
+	public int insertEstudianteAutoId(Estudiante c) {
+		SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
+				.withSchemaName("public")
+				.withTableName("tb_expediente")
+				//PK
+				.usingGeneratedKeyColumns("id_expediente");
+		
+		//Valores del insert
+		Map<String, Object> parametros = new HashMap<String, Object>();
+		parametros.put("nombre1", c.getNombre1());
+		parametros.put("nombre2", c.getNombre2());
+		parametros.put("apellido1", c.getApellido1());
+		parametros.put("apellido2", c.getApellido2());
+		parametros.put("carnet", c.getCarnet());
+		parametros.put("apellido1", c.getApellido1());
+		parametros.put("fecha_nac", c.getFecha_nac());
+		parametros.put("direccion_vivienda", c.getDireccion_vivienda());
+		parametros.put("telefono", c.getTel());
+		parametros.put("celular",c.getCel());
+		parametros.put("id_centro_escolar", c.getEscuela());
+		parametros.put("nombre_padre", c.getNombre_padre());
+		parametros.put("nombre_madre", c.getNombre_madre());
+		parametros.put("id_departamento", c.getDepartamento());
+		parametros.put("id_municipio", c.getMunicipio());
+		
+		//el metodo executeAndReturnKey devuelve la lave primaria generada en el insert
+		Number id_generated = jdbcInsert.executeAndReturnKey(parametros);
+		
+		return id_generated.intValue();
 	}
 
 }

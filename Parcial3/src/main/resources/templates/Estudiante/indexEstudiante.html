@@ -6,16 +6,7 @@
 </head>
 
 <body>
-	
-	<form th:action = "@{/mostrarEstudiante}" method = "post">
-		<label>Buscar por codigo de estudiante: </label>
-		<input type="number" name="codigo">
-		<br>
-		<input type="submit" value="Buscar">
-	</form>
-	
-	<br>
-	
+
 	<form th:action = "@{/insertExpediente}">
 		<input type="submit" value="Agregar nuevo expediente">
 	</form>
@@ -31,11 +22,5 @@
 	
 	<br>
 	
-	<!-- <form th:action = "@{/filtrarEstudiante}" method = "post">
-		<label>Ingrese la cadena por la que desea filtrar: </label>
-		<input type="submit" value="Filtrar">
-	</form>
-	 -->
-
 </body>
 </html>

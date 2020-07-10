@@ -18,8 +18,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(schema="public",name="TB_CENTROS_ESCOLARES")
 public class Escuelas {
-
-	/*
+/*
 	@OneToMany(mappedBy="id_centro_escolar",fetch=FetchType.EAGER)
 	private List<Estudiante> estudiantes;
 	*/
