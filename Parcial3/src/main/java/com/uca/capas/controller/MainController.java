@@ -106,7 +106,7 @@ public class MainController {
 
 	//--Guardar nuevo--
 	@RequestMapping ("/guardarUsuario")
-	public ModelAndView guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result) {
+	public ModelAndView guardarU(@Valid @ModelAttribute Usuario usuario, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
@@ -130,7 +130,7 @@ public class MainController {
 	
 	//--Actualizar--
 	@RequestMapping ("/actualizarUsuario")
-	public ModelAndView updateMateria(@Valid @ModelAttribute Usuario usuario, BindingResult result) {
+	public ModelAndView updateU(@Valid @ModelAttribute Usuario usuario, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
@@ -168,7 +168,7 @@ public class MainController {
 
 	//--Guardar nuevo--
 	@RequestMapping ("/guardarMateria")
-	public ModelAndView guardar(@Valid @ModelAttribute Materia materia, BindingResult result) {
+	public ModelAndView guardarM(@Valid @ModelAttribute Materia materia, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
@@ -192,7 +192,7 @@ public class MainController {
 	
 	//--Actualizar--
 	@RequestMapping ("/actualizarMateria")
-	public ModelAndView updateMateria(@Valid @ModelAttribute Materia materia, BindingResult result) {
+	public ModelAndView updateM(@Valid @ModelAttribute Materia materia, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
@@ -229,13 +229,13 @@ public class MainController {
 		}
 		
 		mav.addObject("escuela", escuela);
-		mav.setViewName("Escuelas");
+		mav.setViewName("CentrosEscolares");
 		return mav;
 	}
 
 	//--Guardar nuevo--
 	@RequestMapping ("/guardarCentroEscolar")
-	public ModelAndView guardarEscuela(@Valid @ModelAttribute Escuela escuela, BindingResult result) {
+	public ModelAndView guardarE(@Valid @ModelAttribute Escuela escuela, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
@@ -259,7 +259,7 @@ public class MainController {
 	
 	//--Actualizar--
 	@RequestMapping ("/actualizarCentroEscolar")
-	public ModelAndView updateEscuela(@Valid @ModelAttribute Escuela escuela, BindingResult result) {
+	public ModelAndView updateE(@Valid @ModelAttribute Escuela escuela, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
 		
 		if(result.hasErrors()) {
@@ -275,7 +275,7 @@ public class MainController {
 				e.printStackTrace();
 			}
 			mav.addObject("escuela", escuela);
-			mav.setViewName("Escuelas");
+			mav.setViewName("CentrosEscolares");
 		}
 
 		return mav;

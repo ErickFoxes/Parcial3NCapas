@@ -23,7 +23,7 @@ public class UsuarioDAOlmpl implements UsuarioDAO {
 	@PersistenceContext(unitName="capas")
 	private EntityManager entityManager;
 	
-	public static final String sql = "UPDATE public.TB_USUARIO SET rol = ?, nombre_usuario = ?, pass = ?, nombre = ?, apellido = ?, edad = ?, fecha_nac = ?, id_departamento = ?, id_municipio = ?, direccion_residencia = ?, estado = ? WEHRE id_usuario = ?";
+	public static final String sql = "UPDATE public.TB_USUARIO SET rol = ?, username = ?, pass = ?, nombre = ?, apellido = ?, edad = ?, fecha_nac = ?, id_departamento = ?, id_municipio = ?, direccion_residencia = ?, estado = ? WEHRE id_usuario = ?";
 
 	@Override
 	public List<Usuario> findAllUsers() throws DataAccessException {

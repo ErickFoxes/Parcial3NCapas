@@ -15,22 +15,17 @@
 			<th>Opcion</th>
 		</thead>
 		
-		<th:block th:each="materia , row:${materias}">
+		<th:block th:each="materia, row:${materias}">
 			<tr>
-				<th th:text="*{id_materia}"/>
-				<th th:text="*{nombre_materia}"/>
-				<th>
-					<form th:action="@{/EditarMateria}" method="post">
-						<input type="submit" value="Editar">
-					</form>
-				</th>
+				<th th:text="${materia.id_materia}"/>
+				<th th:text="${materia.nombre_materia}"/>
 			</tr>
 		</th:block>
 	</table>
 	
 	<br>
 	
-	<form th:action="@{/AñadirMateria}" method="post">
+	<form th:action="@{/AgregarMateria}" method="post">
 		<input type="submit" value="Agregar nueva Materia">
 	</form>
 
