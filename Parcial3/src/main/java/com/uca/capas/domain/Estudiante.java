@@ -61,7 +61,7 @@ public class Estudiante {
 	
 	//@NotNull(message = "El campo fecha de nacimiento no puede quedar vacio")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@NotEmpty(message="El campo fecha de nacimiento no puede estar vacío")
+	@NotNull(message="El campo fecha de nacimiento no puede estar vacío")
 	@Column(name="fecha_nac")
 	private Date fecha_nac;
 	

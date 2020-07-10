@@ -101,6 +101,8 @@ public class EstudianteController {
 		
 		else {
 			estudianteService.save(estudiante);
+			//imprimiendo que el expediente fue ingresado con exito uwu
+			mav.addObject("ExpedienteS", "Expediente creado con exito");
 			mav.setViewName("Estudiante/indexEstudiante");
 		}
 		
@@ -115,6 +117,7 @@ public class EstudianteController {
 		List <Departamentos> departamentos = null;
 		List <Municipios> municipios = null;
 		List <Escuelas> escuelas = null;
+		
 		try{
 			departamentos = departamentoService.findAll();
 			municipios = municipioService.findAll();
@@ -122,6 +125,7 @@ public class EstudianteController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
 		mav.addObject("departamentos", departamentos);
 		mav.addObject("municipios", municipios);
 		mav.addObject("escuelas", escuelas);
