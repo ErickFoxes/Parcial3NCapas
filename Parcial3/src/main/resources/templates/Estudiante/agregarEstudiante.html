@@ -12,7 +12,7 @@
 	<h1>Ingresar nuevo expediente</h1>
 
 	<form th:action="@{/saveExpediente}" th:object="${estudiante}"
-		method="post">
+		method="post" class="form-group">
 
 		<label>Primer nombre: </label> <input th:field="*{nombre1}"
 			type="text" /> <span th:errors="*{nombre1}" style="color: #E81505"></span>
@@ -65,15 +65,15 @@
 				th:value="${escuela.id_centro_escolar}"
 				th:text="${escuela.nombre_centro_escolar}"></option>
 		</select> <br>
-		<br> <input type="submit" value="Guardar"> <br>
-		<br> <input type="reset" value="Limpiar">
+		<br> <input type="submit" value="Guardar" class="btn btn-primary"> <br>
+		<br> <input type="reset" value="Limpiar" class="btn btn-warning">
 
 	</form>
 
 	<br>
 
 	<form th:action="@{/buscar}">
-		<input type="submit" value="Regresar">
+		<input type="submit" value="Regresar" class="btn btn-info">
 	</form>
 
 <!--  

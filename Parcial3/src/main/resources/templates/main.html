@@ -2,14 +2,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css" >
+
 <title>Programa</title>
 </head>
 <body>
-	<form method="post" th:action="@{/buscar}" >
-		<input type="submit" value="Coordinador" >
-	</form>
-	<form method="post" th:action="@{/buscar2}" >
-		<input type="submit" value="Administrador" >
-	</form>
+	<form method="post" th:action="@{/buscar}" class="form-group">
+		<input type="submit" value="Coordinador" class="btn  btn-primary ">
+	</form><br>
+	<form method="post" th:action="@{/buscar2}" class="form-group">
+		<input type="submit" value="Administrador" class="btn  btn-primary ">
+	</form><br>
 </body>
 </html>

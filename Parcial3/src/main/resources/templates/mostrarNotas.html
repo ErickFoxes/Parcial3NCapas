@@ -21,7 +21,7 @@
 				<th>
 					<form method="post" th:action="@{/modificarNotas}">
 						<input type="hidden" name="id_estudiante" th:value=${notas.id_estudiante} >
-						<input type="submit" value="Editar materia">
+						<input type="submit" value="Editar materia" class="btn btn-info">
 					</form>
 				</th>
 				<th th:text="${notas.materia.nombre_materia}">

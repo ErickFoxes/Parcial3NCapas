@@ -19,12 +19,12 @@
 			<tr>
 				<th>
 					<form method="post"  th:action="@{/actualizarEstudiante}">
-						<input type="hidden" name="id_estudiante" th:value=${est.id_estudiante} >
-						<input type="submit" value="est">
-					</form>
+						<input type="hidden" name="id_estudiante" th:value=${est.id_estudiante}  >
+						<input type="submit" value="modificar estudiante" class="btn btn-info">
+					</form><br>
 					<form method="post" th:action="@{/mostrarnota}">
 						<input type="hidden" name="id_estudiante" th:value=${est.id_estudiante} >
-						<input type="submit" value="mat">
+						<input type="submit" value="cambiar materia"class="btn btn-info">
 					</form>
 				</th>
 				<th th:text="${est.nombre1}">

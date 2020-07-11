@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 <title>lista de Materias</title>
 </head>
 <body>
@@ -32,7 +34,7 @@
 	<br>
 	
 	<form th:action="@{/AgregarMateria}" method="post">
-		<input type="submit" value="Agregar nueva Materia">
+		<input type="submit" value="Agregar nueva Materia" class="btn btn-primary">
 	</form>
 
 </body>

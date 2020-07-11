@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 <title>Catalogo de C.E</title>
 </head>
 <body>
@@ -25,7 +27,7 @@
 				<th>
 					<form method="post" th:action="@{/actualizarEscuela2}">
 					<input type="hidden" name="id_centro_escolar" th:value=${escuela.id_centro_escolar} >
-						<input type="submit" value="Editar">
+						<input type="submit" value="Editar" class="btn btn-primary">
 					</form>
 				</th>
 			</tr>
@@ -35,7 +37,7 @@
 	<br>
 	
 	<form th:action="@{/AgregarEscuela}" method="post">
-		<input type="submit" value="Agregar nueva Escuela">
+		<input type="submit" value="Agregar nueva Escuela" class="btn btn-primary">
 	</form>
 
 	
