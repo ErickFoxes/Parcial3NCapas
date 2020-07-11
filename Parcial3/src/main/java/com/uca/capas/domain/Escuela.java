@@ -26,6 +26,15 @@ public class Escuela {
 	@Column(name="id_centro_escolar")
 	private Integer id_centro_escolar;
 	
+	
+	public Integer getId_centro_escolar() {
+		return id_centro_escolar;
+	}
+
+	public void setId_centro_escolar(Integer id_centro_escolar) {
+		this.id_centro_escolar = id_centro_escolar;
+	}
+
 	@Size(message="Este campo no debe tener mas de 30 caracteres", max=30)
 	@NotEmpty(message="El campo primer nombre no puede estar vacío")
 	@Column(name="nombre_centro_escolar")

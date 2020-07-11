@@ -27,7 +27,7 @@ public class CentroEscolarDAOlmpl implements CentroEscolarDAO {
 	public List<Escuela> findAllSchools() throws DataAccessException {
 		// TODO Auto-generated method stub
 		StringBuffer sb = new StringBuffer();
-		sb.append("select * from public.TB_CENTROS_ESCOLARES");
+		sb.append("select (id_centro_escolar, nombre_centro_escolar) from public.TB_CENTROS_ESCOLARES");
 		
 		Query query = entityManager.createNativeQuery(sb.toString(),Escuela.class);
 		List<Escuela>result=query.getResultList();

@@ -248,7 +248,7 @@ public class MateriaController {
 			Escuela escuela = escuelaService.findOneSchool(id);
 			
 			mav.addObject("escuela", escuela);
-			mav.setViewName("Escuelas");
+			mav.setViewName("CentrosEscolares");
 			return mav;
 		}
 
@@ -270,7 +270,7 @@ public class MateriaController {
 					e.printStackTrace();
 				}
 				mav.addObject("escuela", escuela);
-				mav.setViewName("Escuelas"); 
+				mav.setViewName("CentrosEscolares"); 
 			}
 			
 			return mav;
@@ -283,7 +283,7 @@ public class MateriaController {
 				Escuela escuela = null;
 				escuela = escuelaService.findOneSchool(escu);
 				mav.addObject("escuela", escuela);
-				mav.setViewName("ActualizarEscuela");
+				mav.setViewName("ActualizarCE");
 				return mav;
 			}
 		
@@ -305,9 +305,37 @@ public class MateriaController {
 					e.printStackTrace();
 				}
 				mav.addObject("escuela", escuelaSelect);
-				mav.setViewName("Escuelas");
+				mav.setViewName("CentrosEscolares");
 			}
 
+			return mav;
+		}
+		
+		//
+		@RequestMapping ("/paginaMateria")
+		public ModelAndView inicioM() { 
+			ModelAndView mav = new ModelAndView();
+			List<Materia> materiasSelect = materiaService.findAllSubjects();
+			mav.addObject("materia", materiasSelect );
+			mav.setViewName("Materias"); 
+			return mav;
+		}
+		
+		@RequestMapping ("/paginaUsuario")
+		public ModelAndView inicioU() { 
+			ModelAndView mav = new ModelAndView();
+			List<Usuario> usuariosSelect = usuarioService.findAllUsers();
+			mav.addObject("usuario", usuariosSelect );
+			mav.setViewName("Usuarios"); 
+			return mav;
+		}
+		
+		@RequestMapping ("/paginaEscuela")
+		public ModelAndView inicioE() { 
+			ModelAndView mav = new ModelAndView();
+			List<Escuela> escuelasSelect = escuelaService.findAllSchools();
+			mav.addObject("escuela", escuelasSelect );
+			mav.setViewName("CentrosEscolares"); 
 			return mav;
 		}
 

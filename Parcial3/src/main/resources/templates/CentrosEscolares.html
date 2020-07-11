@@ -13,20 +13,18 @@
 		<thead>
 			<th>id Centro escolar</th>
 			<th>Nombre</th>
-			<th>Departamento</th>
-			<th>Municipio</th>
+			
 			<th>Opcion</th>
 		</thead>
 		
-		<th:block th:each="escuela, row:${escuela.departamento}, ${escuela.municipio}"> 
+		<th:block th:each="escuela, row:${escuelas}"> 
 			<tr>
 				<th th:text="${escuela.id_centro_escolar}"/>
 				<th th:text="${escuela.nombre_centro_escolar}"/>
-				<th th:text="${escuela.departamento.departamento_id}"/>
-				<th th:text="${escuela.municipio.municipio_id}"/>
+				
 				<th>
 					<form method="post" th:action="@{/actualizarEscuela2}">
-					<input type="hidden" name="id_centro_escolar" th:value=${materia.id_centro_escolar} >
+					<input type="hidden" name="id_centro_escolar" th:value=${escuela.id_centro_escolar} >
 						<input type="submit" value="Editar">
 					</form>
 				</th>
